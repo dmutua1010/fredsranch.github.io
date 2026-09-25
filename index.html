@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fred's Ranch &amp; Resort — Operations Manager Performance Evaluation</title>
+  <style>
+    :root {
+      --bg: #faf7f2;
+      --panel: #ffffff;
+      --ink: #241d15;
+      --ink-soft: #6b5f50;
+      --line: #ddd2bd;
+      --rust: #c1591f;
+      --rust-dark: #9c4416;
+      --navy: #24333f;
+      --gold-soft: #f4ead2;
+      --green: #2f7a4d; --green-bg: #e7f4ec;
+      --amber: #b3781a; --amber-bg: #fbf0dc;
+      --red: #b13a2c; --red-bg: #fbe9e5;
+      --grey: #7a6f60; --grey-bg: #eee8dc;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .wrap { max-width: 1050px; margin: 0 auto; padding: 24px 18px 80px; }
+
+    .toolbar {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--navy);
+      color: #fff;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+      padding: 10px 18px;
+      font-size: 13px;
+    }
+    .toolbar .title { font-weight: bold; margin-right: auto; }
+    .toolbar button {
+      background: var(--rust); color: #fff; border: none; border-radius: 6px;
+      padding: 8px 14px; font-size: 12.5px; font-weight: bold; cursor: pointer;
+    }
+    .toolbar button.secondary { background: #3d4d5c; }
+    .toolbar button:hover { filter: brightness(1.1); }
+    .toolbar .status { font-size: 11.5px; color: #cbd5df; min-width: 120px; }
+
+    header.hero {
+      text-align: center;
+      padding: 28px 16px 20px;
+      border-bottom: 4px solid var(--rust);
+      background: linear-gradient(180deg, var(--gold-soft), var(--bg) 90%);
+    }
+    header.hero h1 { font-size: 1.35rem; color: var(--navy); margin: 0 0 4px; }
+    header.hero p { margin: 0; color: var(--ink-soft); font-style: italic; font-size: 0.92rem; }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(60,40,20,0.06);
+      padding: 18px 20px;
+      margin: 20px 0;
+    }
+    .panel h2 {
+      font-size: 1.05rem; color: var(--rust-dark);
+      border-bottom: 2px solid var(--gold-soft);
+      padding-bottom: 8px; margin: 0 0 14px;
+    }
+    .rules-box {
+      background: var(--amber-bg); border-left: 4px solid var(--amber);
+      padding: 12px 16px; border-radius: 6px; font-size: 12.5px; margin-bottom: 20px;
+    }
+    .rules-box ol { margin: 6px 0 0; padding-left: 18px; }
+
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+    @media (max-width: 700px) { .grid2 { grid-template-columns: 1fr; } }
+
+    label { display: block; font-size: 11.5px; font-weight: bold; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px; }
+    input[type="text"], input[type="date"], input[type="number"], textarea {
+      width: 100%; padding: 7px 9px; border: 1px solid var(--line); border-radius: 6px;
+      font-family: inherit; font-size: 13.5px; background: #fffdf9; color: var(--ink);
+    }
+    textarea { resize: vertical; min-height: 44px; }
+    .radio-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .radio-row label { text-transform: none; font-weight: normal; font-size: 13px; display: flex; align-items: center; gap: 5px; margin: 0; }
+
+    table.kpi-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 4px; }
+    .kpi-table th, .kpi-table td { border: 1px solid var(--line); padding: 8px; vertical-align: top; }
+    .kpi-table th { background: var(--navy); color: #fff; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.3px; }
+    .kpi-table td.kpi-name { width: 17%; font-weight: bold; color: var(--rust-dark); }
+    .kpi-table td.kpi-name .code { display: block; font-weight: normal; color: var(--ink-soft); font-size: 11px; }
+    .kpi-table td.target-cell { width: 10%; font-size: 12px; color: var(--ink-soft); white-space: nowrap; }
+    .kpi-table td.actual-cell { width: 9%; }
+    .kpi-table td.ref-cell { width: 13%; }
+    .kpi-table td.control-cell { width: 26%; }
+    .kpi-table td.score-cell { width: 9%; text-align: center; font-weight: bold; }
+    .kpi-table td.weight-cell { width: 8%; text-align: center; color: var(--ink-soft); }
+    .kpi-table td.wscore-cell { width: 8%; text-align: center; font-weight: bold; }
+
+    .dim-header td {
+      background: var(--gold-soft); font-weight: bold; color: var(--rust-dark);
+      font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.3px;
+    }
+
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 10.5px; font-weight: bold; }
+    .badge-green { background: var(--green-bg); color: var(--green); border: 1px solid var(--green); }
+    .badge-amber { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber); }
+    .badge-red { background: var(--red-bg); color: var(--red); border: 1px solid var(--red); }
+    .badge-grey { background: var(--grey-bg); color: var(--grey); border: 1px solid var(--grey); }
+
+    table.summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .summary-table th, .summary-table td { border: 1px solid var(--line); padding: 9px 11px; text-align: left; }
+    .summary-table th { background: var(--navy); color: #fff; font-size: 10.5px; text-transform: uppercase; }
+    .summary-table tr.overall td { background: var(--navy); color: #fff; font-weight: bold; font-size: 14px; }
+
+    .capa-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+    .capa-table th, .capa-table td { border: 1px solid var(--line); padding: 7px; vertical-align: top; }
+    .capa-table th { background: var(--navy); color: #fff; font-size: 10.5px; text-transform: uppercase; }
+    .capa-table td.rm-cell { text-align: center; width: 34px; }
+    .capa-table button.rm { background: var(--red); color: #fff; border: none; border-radius: 5px; padding: 4px 8px; cursor: pointer; font-size: 11px; }
+    #addCapaBtn { background: var(--navy); color: #fff; border: none; padding: 7px 14px; border-radius: 6px; font-size: 12.5px; cursor: pointer; margin-top: 8px; }
+
+    .sign-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 10px; }
+    .sign-block p.role { font-weight: bold; color: var(--rust-dark); margin: 0 0 10px; }
+
+    footer { text-align: center; font-size: 11px; color: var(--ink-soft); border-top: 1px solid var(--line); padding-top: 14px; margin-top: 30px; }
+
+    @media print {
+      .toolbar { display: none !important; }
+      body { background: #fff; }
+      .panel { box-shadow: none; border: 1px solid #999; break-inside: avoid; }
+      input, textarea { border: none; border-bottom: 1px solid #999; border-radius: 0; background: transparent; }
+      #addCapaBtn, .capa-table button.rm { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <div class="title">Ops Manager BSC — Performance Evaluation</div>
+    <span class="status" id="saveStatus">Not saved yet</span>
+    <button class="secondary" id="saveBtn">💾 Save Draft</button>
+    <button class="secondary" id="clearBtn">🗑 Clear Form</button>
+    <button id="printBtn">🖨 Print / PDF</button>
+  </div>
+
+  <header class="hero">
+    <h1>Operations Manager Performance Evaluation &amp; Management Form</h1>
+    <p>Fill in performance data — scores calculate automatically.</p>
+  </header>
+
+  <div class="wrap">
+
+    <div class="rules-box">
+      <strong>Evaluation Rules &amp; Evidence Gate</strong>
+      <ol>
+        <li><strong>Evidence Required:</strong> A score is invalid without an attached evidence reference.</li>
+        <li><strong>Managerial Control Test:</strong> Assesses what the OM caused, coordinated, or controlled.</li>
+        <li><strong>Formulas:</strong> Higher-is-better: MIN(100, Actual ÷ Target × 100).</li>
+      </ol>
+    </div>
+
+    <div class="panel">
+      <h2>1. General Details</h2>
+      <div class="grid2">
+        <div>
+          <label for="empName">Employee Name</label>
+          <input type="text" id="empName" value="Reagan Ogol">
+        </div>
+        <div>
+          <label for="evalName">Evaluator Name</label>
+          <input type="text" id="evalName" value="General Manager">
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>2. Performance Scorecard</h2>
+      <table class="kpi-table">
+        <thead>
+          <tr>
+            <th>KPI</th>
+            <th>Target</th>
+            <th>Actual %</th>
+            <th>Evidence Ref</th>
+            <th>Managerial Control</th>
+            <th>Weight</th>
+            <th>Score</th>
+            <th>Weighted</th>
+          </tr>
+        </thead>
+        <tbody id="kpiBody"></tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <h2>3. Summary &amp; Final BSC Score</h2>
+      <table class="summary-table">
+        <thead>
+          <tr><th>Dimension</th><th>Weight</th><th>Weighted Contribution</th><th>Dimension Score</th><th>Performance Band</th></tr>
+        </thead>
+        <tbody id="summaryBody"></tbody>
+        <tbody>
+          <tr class="overall">
+            <td colspan="2">OVERALL BSC SCORE</td>
+            <td id="overallScore" colspan="3">0.0%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <h2>4. CAPA Log</h2>
+      <table class="capa-table">
+        <thead>
+          <tr><th>KPI Ref</th><th>Root Cause</th><th>Corrective Action</th><th>Owner &amp; Date</th><th></th></tr>
+        </thead>
+        <tbody id="capaBody"></tbody>
+      </table>
+      <button id="addCapaBtn" type="button">+ Add CAPA Row</button>
+    </div>
+
+    <div class="panel">
+      <h2>5. Sign-Off</h2>
+      <div class="sign-grid">
+        <div class="sign-block">
+          <p class="role">General Manager (Evaluator)</p>
+          <input type="text" id="gmSig" placeholder="Signature">
+          <input type="date" id="gmDate" style="margin-top:10px;">
+        </div>
+        <div class="sign-block">
+          <p class="role">Operations Manager (Employee)</p>
+          <input type="text" id="omSig" placeholder="Signature">
+          <input type="date" id="omDate" style="margin-top:10px;">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var DIMENSIONS = [
+        {
+          key: "OE", name: "Operational Governance & Execution", weight: 35.0,
+          kpis: [
+            { code: "OE-01", name: "SOP Compliance", target: 90, targetLabel: "≥90%", weight: 7.0 },
+            { code: "OE-02", name: "Daily Operations Execution", target: 100, targetLabel: "100%", weight: 7.0 }
+          ]
+        },
+        {
+          key: "SS", name: "Systems & Structures", weight: 20.0,
+          kpis: [
+            { code: "SS-01", name: "PMS & POS Adoption", target: 95, targetLabel: "≥95%", weight: 20.0 }
+          ]
+        }
+      ];
+
+      var kpiBody = document.getElementById("kpiBody");
+      var summaryBody = document.getElementById("summaryBody");
+
+      DIMENSIONS.forEach(function (dim) {
+        var dimRow = document.createElement("tr");
+        dimRow.className = "dim-header";
+        dimRow.innerHTML = '<td colspan="8">DIMENSION: ' + dim.name + ' (' + dim.weight.toFixed(1) + '%)</td>';
+        kpiBody.appendChild(dimRow);
+
+        dim.kpis.forEach(function (kpi) {
+          var tr = document.createElement("tr");
+          tr.innerHTML =
+            '<td class="kpi-name">' + kpi.name + '<span class="code">' + kpi.code + '</span></td>' +
+            '<td class="target-cell">' + kpi.targetLabel + '</td>' +
+            '<td class="actual-cell"><input type="number" step="0.1" class="actual-input" data-code="' + kpi.code + '"></td>' +
+            '<td class="ref-cell"><input type="text" class="ref-input" data-code="' + kpi.code + '"></td>' +
+            '<td class="control-cell"><textarea class="control-input" data-code="' + kpi.code + '"></textarea></td>' +
+            '<td class="weight-cell">' + kpi.weight.toFixed(2) + '%</td>' +
+            '<td class="score-cell" id="score-' + kpi.code + '">—</td>' +
+            '<td class="wscore-cell" id="wscore-' + kpi.code + '">—</td>';
+          kpiBody.appendChild(tr);
+        });
+
+        var sumRow = document.createElement("tr");
+        sumRow.innerHTML =
+          '<td>' + dim.name + '</td>' +
+          '<td>' + dim.weight.toFixed(2) + '%</td>' +
+          '<td id="dimW-' + dim.key + '">0.00%</td>' +
+          '<td id="dimS-' + dim.key + '">—</td>' +
+          '<td id="dimB-' + dim.key + '"><span class="badge badge-grey">Incomplete</span></td>';
+        summaryBody.appendChild(sumRow);
+      });
+
+      function bandFor(score) {
+        if (score === null) return { label: "Incomplete", cls: "badge-grey" };
+        if (score >= 90) return { label: "Target / Above", cls: "badge-green" };
+        if (score >= 70) return { label: "On Track", cls: "badge-amber" };
+        return { label: "Below Target", cls: "badge-red" };
+      }
+
+      function recalc() {
+        var overallWeighted = 0;
+
+        DIMENSIONS.forEach(function (dim) {
+          var dimWeighted = 0;
+          dim.kpis.forEach(function (kpi) {
+            var actualInput = document.querySelector('.actual-input[data-code="' + kpi.code + '"]');
+            var refInput = document.querySelector('.ref-input[data-code="' + kpi.code + '"]');
+            var scoreCell = document.getElementById("score-" + kpi.code);
+            var wscoreCell = document.getElementById("wscore-" + kpi.code);
+
+            if (!actualInput.value || !refInput.value) {
+              scoreCell.innerHTML = '<span class="badge badge-grey">—</span>';
+              wscoreCell.textContent = "—";
+              return;
+            }
+
+            var actual = parseFloat(actualInput.value);
+            var score = Math.min(100, (actual / kpi.target) * 100);
+            var weighted = score * (kpi.weight / 100);
+            dimWeighted += weighted;
+
+            var b = bandFor(score);
+            scoreCell.innerHTML = score.toFixed(1) + '%';
+            wscoreCell.textContent = weighted.toFixed(2) + "%";
+          });
+
+          overallWeighted += dimWeighted;
+          document.getElementById("dimW-" + dim.key).textContent = dimWeighted.toFixed(2) + "%";
+        });
+
+        document.getElementById("overallScore").textContent = overallWeighted.toFixed(1) + "%";
+      }
+
+      kpiBody.addEventListener("input", recalc);
+      document.getElementById("printBtn").addEventListener("click", function () { window.print(); });
+    })();
+  </script>
+</body>
+</html>
