@@ -56,7 +56,7 @@
     }
 
     a { color: inherit; text-decoration: none; }
-    button, input, select, textarea { font: inherit; }
+    button, input, select { font: inherit; }
 
     .container {
       max-width: 1300px;
@@ -687,7 +687,6 @@
       font-size: 11px;
       line-height: 1.7;
       color: var(--text);
-      white-space: pre-wrap;
     }
 
     table {
@@ -854,6 +853,111 @@
       body { background: white; color: black; padding-bottom: 0; }
       .card, .node, .dept-col { box-shadow: none; }
     }
+
+    /* ===== HMOS EXTENSION v3.0 ===== */
+    .brand-mark.has-logo { background: transparent; box-shadow: none; padding: 0; }
+    .brand-mark img { width: 100%; height: 100%; object-fit: contain; border-radius: 10px; display: block; }
+    .logo-slot { display: none; }
+
+    .x-grid { display: grid; gap: 12px; margin-bottom: 16px; }
+    .x-g2 { grid-template-columns: 1.1fr 0.9fr; }
+    .x-g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .x-g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    @media (max-width: 900px) { .x-g2, .x-g3, .x-g4 { grid-template-columns: 1fr; } }
+
+    .x-note { font-size: 11.5px; color: var(--text-3); border-left: 3px solid var(--line); padding: 6px 10px; margin: 10px 0; }
+    .x-note strong { color: var(--text-2); }
+
+    .x-table-wrap { overflow-x: auto; border: 1px solid var(--line-soft); border-radius: var(--radius); }
+    .x-table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 760px; }
+    .x-table th { text-align: left; font-family: 'DM Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: .6px; color: var(--text-3); background: var(--surface-2); padding: 9px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+    .x-table td { padding: 8px 10px; border-bottom: 1px solid var(--line-soft); vertical-align: middle; }
+    .x-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .x-table input, .x-table select { background: var(--bg-soft); border: 1px solid var(--line); color: var(--text); border-radius: 6px; padding: 5px 7px; width: 100%; min-width: 70px; font-size: 12px; }
+    .x-table input:focus, .x-table select:focus, .x-field input:focus, .x-field select:focus { outline: 2px solid var(--board); outline-offset: 1px; }
+
+    .x-field { display: flex; flex-direction: column; gap: 4px; }
+    .x-field label { font-size: 10.5px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .6px; color: var(--text-3); }
+    .x-field input, .x-field select { background: var(--bg-soft); border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 8px 10px; }
+    .x-inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 12px 0; }
+
+    .x-status { display: inline-flex; align-items: center; gap: 5px; padding: 3px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; font-family: 'DM Mono', monospace; }
+    .x-ok { background: var(--fin-soft); color: var(--fin); }
+    .x-warn { background: var(--board-soft); color: var(--board); }
+    .x-bad { background: var(--cut-soft); color: var(--cut); }
+    .x-info { background: var(--exec-soft); color: var(--exec); }
+    .x-new { background: var(--new-soft); color: var(--new); }
+
+    .x-bar { height: 8px; background: var(--surface-3); border-radius: 999px; overflow: hidden; min-width: 80px; }
+    .x-bar > span { display: block; height: 100%; border-radius: 999px; background: var(--fin); transition: width .35s ease; }
+    .x-bar.warn > span { background: var(--board); }
+    .x-bar.bad > span { background: var(--cut); }
+
+    .x-score-ring { --p: 0; width: 132px; height: 132px; border-radius: 50%; display: grid; place-items: center; margin: 0 auto;
+      background: conic-gradient(var(--ring, var(--fin)) calc(var(--p) * 1%), var(--surface-3) 0); transition: background .3s; }
+    .x-score-ring > div { width: 100px; height: 100px; border-radius: 50%; background: var(--surface); display: grid; place-items: center; text-align: center; }
+    .x-score-ring b { font-size: 26px; font-family: 'DM Mono', monospace; line-height: 1; }
+    .x-score-ring small { display: block; font-size: 9.5px; color: var(--text-3); text-transform: uppercase; letter-spacing: .6px; margin-top: 3px; }
+
+    .x-dim { display: grid; grid-template-columns: 150px 1fr 56px; gap: 10px; align-items: center; padding: 7px 0; border-bottom: 1px dashed var(--line-soft); }
+    .x-dim:last-child { border-bottom: 0; }
+    .x-dim span:first-child { font-size: 12px; color: var(--text-2); }
+    .x-dim span:last-child { font-family: 'DM Mono', monospace; text-align: right; font-weight: 700; }
+
+    .x-loop { display: flex; flex-wrap: wrap; gap: 8px; align-items: stretch; margin: 12px 0; }
+    .x-loop .step { flex: 1 1 120px; background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px; cursor: pointer; position: relative; transition: transform .15s, border-color .15s; }
+    .x-loop .step:hover, .x-loop .step.on { transform: translateY(-2px); border-color: var(--board); }
+    .x-loop .step .n { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--board); }
+    .x-loop .step h4 { font-size: 12.5px; margin: 3px 0; }
+    .x-loop .step p { font-size: 11px; color: var(--text-3); }
+    .x-loop-detail { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; min-height: 64px; }
+
+    .x-chain { display: grid; gap: 6px; }
+    .x-chain .lvl { display: grid; grid-template-columns: 34px 170px 1fr; gap: 10px; align-items: center; background: var(--surface); border: 1px solid var(--line-soft); border-left: 3px solid var(--c, var(--board)); border-radius: 8px; padding: 8px 10px; }
+    .x-chain .lvl i { color: var(--c, var(--board)); text-align: center; }
+    .x-chain .lvl b { font-size: 12.5px; }
+    .x-chain .lvl span { color: var(--text-2); font-size: 12px; }
+    @media (max-width: 700px) { .x-chain .lvl { grid-template-columns: 26px 1fr; } .x-chain .lvl span { grid-column: 1 / -1; } }
+
+    .x-cal { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    @media (max-width: 900px) { .x-cal { grid-template-columns: 1fr 1fr; } }
+    .x-cal .cell { background: var(--surface); border: 1px solid var(--line-soft); border-radius: var(--radius); padding: 10px; }
+    .x-cal .cell h4 { font-size: 12px; display: flex; justify-content: space-between; align-items: center; }
+    .x-cal .cell ul { list-style: none; margin-top: 6px; }
+    .x-cal .cell li { font-size: 11.5px; color: var(--text-2); padding: 3px 0; display: flex; gap: 6px; }
+    .x-cal .cell li input { accent-color: var(--fin); }
+    .x-cal .cell li.done { color: var(--text-3); text-decoration: line-through; }
+
+    .x-chip-row { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0; }
+    .x-chip { border: 1px solid var(--line); background: var(--surface-2); color: var(--text-2); border-radius: 999px; padding: 4px 11px; font-size: 11.5px; cursor: pointer; }
+    .x-chip.on { background: var(--board-soft); color: var(--board); border-color: rgba(217,160,59,.5); }
+
+    .x-flow { display: flex; align-items: flex-end; gap: 10px; height: 170px; padding: 10px 6px 0; }
+    .x-flow .col { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 5px; height: 100%; }
+    .x-flow .col .b { width: 100%; max-width: 70px; border-radius: 6px 6px 0 0; background: var(--ops); transition: height .35s; min-height: 3px; }
+    .x-flow .col.bn .b { background: var(--cut); }
+    .x-flow .col small { font-size: 10.5px; color: var(--text-3); text-align: center; }
+    .x-flow .col b.v { font-family: 'DM Mono', monospace; font-size: 11px; }
+
+    .x-prop { border: 1px solid var(--line-soft); border-radius: var(--radius); background: var(--surface); }
+    .x-prop summary { cursor: pointer; padding: 10px 12px; display: flex; gap: 10px; align-items: center; list-style: none; font-weight: 600; }
+    .x-prop summary::-webkit-details-marker { display: none; }
+    .x-prop summary::after { content: '\f078'; font-family: 'Font Awesome 6 Free'; font-weight: 900; margin-left: auto; font-size: 10px; color: var(--text-3); transition: transform .2s; }
+    .x-prop[open] summary::after { transform: rotate(180deg); }
+    .x-prop .body { padding: 0 12px 12px; color: var(--text-2); font-size: 12.5px; }
+    .x-prop .body p + p { margin-top: 6px; }
+
+    .x-timeline { position: relative; margin: 10px 0 4px 10px; padding-left: 22px; border-left: 2px solid var(--line); }
+    .x-timeline .t { position: relative; padding: 0 0 14px; }
+    .x-timeline .t::before { content: ''; position: absolute; left: -29px; top: 3px; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--board); }
+    .x-timeline .t.done::before { background: var(--fin); border-color: var(--fin); }
+    .x-timeline .t b { font-size: 12.5px; }
+    .x-timeline .t p { color: var(--text-2); font-size: 12px; }
+
+    .x-toast { position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%) translateY(30px); background: var(--surface-3); border: 1px solid var(--board); color: var(--text); padding: 9px 16px; border-radius: 10px; font-size: 12.5px; opacity: 0; pointer-events: none; transition: all .25s; z-index: 300; }
+    .x-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .x-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+    @media print { .x-actions, .x-toast { display: none !important; } .tab-panel { display: block !important; } }
   </style>
 </head>
 <body>
@@ -869,7 +973,8 @@
       </div>
 
       <div class="header-tools">
-        <span class="pill pill-board"><i class="fa-solid fa-scale-balanced"></i> Corporate Governance v2.0</span>
+        <span class="pill pill-board"><i class="fa-solid fa-scale-balanced"></i> Corporate Governance v3.0 · HMOS</span>
+        <label class="btn" style="cursor:pointer;" title="Load your logo (PNG, SVG, JPG)"><i class="fa-solid fa-image"></i> Logo<input id="logo-input" type="file" accept="image/*" class="logo-slot"></label>
         <button class="btn" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
       </div>
     </div>
@@ -881,6 +986,12 @@
         <button class="tab-btn" data-tab="legal"><i class="fa-solid fa-file-signature"></i> Legal Forms</button>
         <button class="tab-btn" data-tab="ip"><i class="fa-solid fa-shield-halved"></i> IP & Recipe Governance</button>
         <button class="tab-btn" data-tab="sop"><i class="fa-solid fa-clock-rotate-left"></i> SOP Timeline</button>
+        <button class="tab-btn" data-tab="bsc"><i class="fa-solid fa-scale-balanced"></i> BSC Scorecard</button>
+        <button class="tab-btn" data-tab="evidence"><i class="fa-solid fa-folder-open"></i> Evidence &amp; CAPA</button>
+        <button class="tab-btn" data-tab="rhythm"><i class="fa-solid fa-arrows-spin"></i> Control Loop</button>
+        <button class="tab-btn" data-tab="backward"><i class="fa-solid fa-bullseye"></i> Backward Plan</button>
+        <button class="tab-btn" data-tab="theory"><i class="fa-solid fa-flask"></i> HMOS Theory</button>
+        <button class="tab-btn" data-tab="future"><i class="fa-solid fa-stairs"></i> Compare &amp; Future</button>
       </div>
     </div>
   </header>
@@ -909,8 +1020,8 @@
               The result is a more resilient structure built for quicker decisions, stronger oversight, and cleaner operational accountability.
             </p>
             <div class="hero-actions">
-              <button class="btn primary" onclick="document.querySelector('[data-tab=\'integrated\']').click()"><i class="fa-solid fa-arrow-right"></i> View Organogram</button>
-              <button class="btn" onclick="document.querySelector('[data-tab=\'legal\']').click()"><i class="fa-solid fa-file-signature"></i> Review Legal Form</button>
+              <button class="btn primary" onclick="document.querySelector('[data-tab=\"integrated\"]').click()"><i class="fa-solid fa-arrow-right"></i> View Organogram</button>
+              <button class="btn" onclick="document.querySelector('[data-tab=\"legal\"]').click()"><i class="fa-solid fa-file-signature"></i> Review Legal Form</button>
             </div>
           </div>
 
@@ -945,6 +1056,21 @@
           </div>
         </div>
       </div>
+
+
+      <div class="section-head">
+        <div class="section-title-wrap">
+          <span class="tier-pill tier-fin">Live status</span>
+          <span class="tier-desc">Pulled from the scorecard, CAPA register and rhythm modules in this file</span>
+        </div>
+      </div>
+      <div class="row-grid cols-4">
+        <div class="stat-box" style="cursor:pointer;" onclick="goTab('bsc')"><div class="stat-label">Overall BSC</div><div class="stat-val" id="ov-bsc" style="color:var(--fin);">–</div></div>
+        <div class="stat-box" style="cursor:pointer;" onclick="goTab('evidence')"><div class="stat-label">Evidence completeness</div><div class="stat-val" id="ov-ev" style="color:var(--exec);">–</div></div>
+        <div class="stat-box" style="cursor:pointer;" onclick="goTab('evidence')"><div class="stat-label">Open / overdue CAPA</div><div class="stat-val" id="ov-capa" style="color:var(--board);">–</div></div>
+        <div class="stat-box" style="cursor:pointer;" onclick="goTab('future')"><div class="stat-label">Systems connected</div><div class="stat-val" id="ov-int" style="color:var(--ops);">–</div></div>
+      </div>
+      <div class="x-note">Values stay at “–” until actuals are entered or demo data is loaded on the BSC Scorecard tab.</div>
 
       <div class="section-head">
         <div class="section-title-wrap">
@@ -1129,126 +1255,126 @@
           <div class="node-kpi">
             <div class="kpi-title">Operational efficiency</div>
             <div class="kpi-val">Efficiency index: <span class="kpi-target">≥90–95%</span></div>
-            <div class="kpi-val">F&amp;B cost: <span class="kpi-target">≤28.5%</span></div>
+            <div class="kpi-val">F&amp;B cost: <span class="kpi-target">≤28–32%</span></div>
           </div>
           <div class="node-footer"><span>Operations</span><span class="sb sb-core">Core</span></div>
         </div>
 
-        <div class="node node-hr" onclick="openModal('hr_head')">
+        <div class="node node-hr" onclick="openModal('albert_maroa')">
           <div>
-            <div class="node-role">Head of HR & Culture</div>
-            <div class="node-name">Talent & Operations Lead</div>
-            <div class="node-sub">People & compliance</div>
+            <div class="node-role">People & Culture Mgr</div>
+            <div class="node-name">Albert Maroa</div>
+            <div class="node-sub">Human capital & culture</div>
           </div>
           <div class="node-kpi">
-            <div class="kpi-title">People Metrics</div>
-            <div class="kpi-val">Retention: <span class="kpi-target">≥85%</span></div>
-            <div class="kpi-val">SOP Compliance: <span class="kpi-target">100%</span></div>
+            <div class="kpi-title">Talent & culture</div>
+            <div class="kpi-val">Turnover: <span class="kpi-target">≤10–12%</span></div>
+            <div class="kpi-val">Culture index: <span class="kpi-target">≥90%</span></div>
           </div>
-          <div class="node-footer"><span>HR & Legal</span></div>
+          <div class="node-footer"><span>People & Talent</span><span class="sb sb-core">Core</span></div>
         </div>
       </div>
 
       <div class="section-head">
         <div class="section-title-wrap">
           <span class="tier-pill tier-ops">Tier 3</span>
-          <span class="tier-desc">Departmental Operations & Execution Units</span>
+          <span class="tier-desc">Departmental execution — operations, service, kitchen, sales and support</span>
         </div>
       </div>
 
       <div class="dept-columns">
         <div class="dept-col">
-          <div class="dept-col-header">
-            <div class="dept-col-title">Culinary & Kitchen</div>
-            <div class="dept-col-lead">Head Chef & Kitchen Team</div>
+          <div class="dept-col-header" style="border-top: 3px solid var(--fin);">
+            <div class="dept-col-title">Finance & Audit</div>
+            <div class="dept-col-lead">CPA Chris Mutinda</div>
           </div>
           <div class="dept-col-body">
             <div class="dept-staff-item">
-              <span class="dst-role">Executive Chef</span>
-              <span class="dst-name">Culinary Lead</span>
-              <span class="dst-kpi">Food Cost ≤ 28% • Quality 98%</span>
+              <span class="dst-role">Accounts Receivables</span>
+              <span class="dst-name">Mashud Abiola</span>
+              <span class="dst-kpi">Aging &lt;30 days</span>
             </div>
             <div class="dept-staff-item">
-              <span class="dst-role">Sous Chef / Station Cooks</span>
-              <span class="dst-name">Kitchen Brigade</span>
-              <span class="dst-kpi">Ticket Time ≤ 15 mins</span>
+              <span class="dst-role">Cashier / POS</span>
+              <span class="dst-name">Stanley Tonui</span>
+              <span class="dst-kpi">Variance ≤2 units</span>
             </div>
             <div class="dept-staff-item">
-              <span class="dst-role">Hygiene & Food Safety</span>
-              <span class="dst-name">QA Inspector</span>
-              <span class="dst-kpi">HACCP 100% Compliance</span>
+              <span class="dst-role">Store Keeper</span>
+              <span class="dst-name">Maclee Onkoba</span>
+              <span class="dst-kpi">Inventory integrity</span>
             </div>
           </div>
         </div>
 
         <div class="dept-col">
-          <div class="dept-col-header">
-            <div class="dept-col-title">Food & Beverage Service</div>
-            <div class="dept-col-lead">F&B Supervisor & Front-of-House</div>
+          <div class="dept-col-header" style="border-top: 3px solid var(--ops);">
+            <div class="dept-col-title">Front Office & Guest</div>
+            <div class="dept-col-lead">Edna Aluoch — FOM</div>
           </div>
           <div class="dept-col-body">
             <div class="dept-staff-item">
-              <span class="dst-role">F&B Captain</span>
-              <span class="dst-name">Restaurant Manager</span>
-              <span class="dst-kpi">Guest Rating ≥ 4.8 / 5.0</span>
+              <span class="dst-role">Night Manager</span>
+              <span class="dst-name">Deedan Barasa</span>
+              <span class="dst-kpi">Night audit accuracy</span>
             </div>
             <div class="dept-staff-item">
-              <span class="dst-role">Waitstaff & Baristas</span>
-              <span class="dst-name">Service Team</span>
-              <span class="dst-kpi">Upsell Rate +15%</span>
+              <span class="dst-role">Head Receptionist</span>
+              <span class="dst-name">Lydia Olchurie</span>
+              <span class="dst-kpi">Greeting compliance</span>
             </div>
             <div class="dept-staff-item">
-              <span class="dst-role">Head Bartender</span>
-              <span class="dst-name">Bar Lead</span>
-              <span class="dst-kpi">Beverage Margin ≥ 65%</span>
+              <span class="dst-role">Housekeeping</span>
+              <span class="dst-name">Room stewards</span>
+              <span class="dst-kpi">Service readiness</span>
             </div>
           </div>
         </div>
 
         <div class="dept-col">
-          <div class="dept-col-header">
-            <div class="dept-col-title">Accommodations & Facilities</div>
-            <div class="dept-col-lead">Housekeeping & Maintenance Lead</div>
+          <div class="dept-col-header" style="border-top: 3px solid var(--ops);">
+            <div class="dept-col-title">F&amp;B Service</div>
+            <div class="dept-col-lead">S. Sachita — F&amp;B Mgr</div>
           </div>
           <div class="dept-col-body">
             <div class="dept-staff-item">
-              <span class="dst-role">Housekeeping Lead</span>
-              <span class="dst-name">Rooms Supervisor</span>
-              <span class="dst-kpi">Turnaround Time ≤ 30 mins</span>
+              <span class="dst-role">Assistant F&amp;B Mgr</span>
+              <span class="dst-name">D. Mokua</span>
+              <span class="dst-kpi">Table-turn efficiency</span>
             </div>
             <div class="dept-staff-item">
-              <span class="dst-role">Maintenance Tech</span>
-              <span class="dst-name">Facility Engineer</span>
-              <span class="dst-kpi">Zero Unscheduled Downtime</span>
+              <span class="dst-role">Banqueting</span>
+              <span class="dst-name">David Maruti</span>
+              <span class="dst-kpi">Event timeliness</span>
             </div>
             <div class="dept-staff-item">
-              <span class="dst-role">Grounds & Security</span>
-              <span class="dst-name">Ranch Safety Unit</span>
-              <span class="dst-kpi">100% Incident-Free Days</span>
+              <span class="dst-role">Barista Lead</span>
+              <span class="dst-name">Belinda Asembo</span>
+              <span class="dst-kpi">Drink speed & quality</span>
             </div>
           </div>
         </div>
 
         <div class="dept-col">
-          <div class="dept-col-header">
-            <div class="dept-col-title">Finance, Stores & Procurement</div>
-            <div class="dept-col-lead">Inventory Controller & Storekeeper</div>
+          <div class="dept-col-header" style="border-top: 3px solid var(--ops);">
+            <div class="dept-col-title">Kitchen (BOH)</div>
+            <div class="dept-col-lead">Julius Kyalo — Exec Chef</div>
           </div>
           <div class="dept-col-body">
             <div class="dept-staff-item">
-              <span class="dst-role">Storekeeper</span>
-              <span class="dst-name">Inventory Lead</span>
-              <span class="dst-kpi">Stock Variance ≤ 0.5%</span>
+              <span class="dst-role">Head Chef</span>
+              <span class="dst-name">Kenneth Chepsoi</span>
+              <span class="dst-kpi">Wait time ≤55 min</span>
             </div>
             <div class="dept-staff-item">
-              <span class="dst-role">Procurement Officer</span>
-              <span class="dst-name">Supply Chain Specialist</span>
-              <span class="dst-kpi">Vendor Savings ≥ 8%</span>
+              <span class="dst-role">Sous Chef</span>
+              <span class="dst-name">Brian Mwangi</span>
+              <span class="dst-kpi">Recipe protection</span>
             </div>
             <div class="dept-staff-item">
-              <span class="dst-role">Cashier & Night Auditor</span>
-              <span class="dst-name">Accounts Assistant</span>
-              <span class="dst-kpi">Daily Reconciliation 100%</span>
+              <span class="dst-role">Line cooks</span>
+              <span class="dst-name">Lion House Brigade</span>
+              <span class="dst-kpi">Prep consistency</span>
             </div>
           </div>
         </div>
@@ -1257,88 +1383,79 @@
 
     <section id="legal" class="tab-panel">
       <div class="card">
-        <h3><i class="fa-solid fa-file-signature" style="color:var(--board);"></i> Board Authorization Generator</h3>
-        <p class="subtle">Generate legally binding authorization forms for operational decisions, expenditure approvals, or policy updates.</p>
-        
-        <form id="legalForm" onsubmit="generateLegalDoc(event)">
-          <div class="row-grid cols-2">
-            <div class="form-group">
-              <label for="docType">Document Type</label>
-              <select id="docType" class="form-control" required>
-                <option value="Resolution">Board Resolution for CapEx / Operational Change</option>
-                <option value="SOP Approval">Official SOP Authorization Directive</option>
-                <option value="IP Assignment">Recipe / IP Ownership Protection Notice</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="authorizer">Authorizing Board Director</label>
-              <select id="authorizer" class="form-control" required>
-                <option value="Fred Obachi Machoka (Chairman)">Fred Obachi Machoka — Chairman</option>
-                <option value="Victor Keari Machoka (Managing Director)">Victor Keari Machoka — Managing Director</option>
-                <option value="Linda Machoka (Legal & Compliance)">Linda Machoka — Legal & Compliance</option>
-              </select>
-            </div>
-          </div>
+        <h3><i class="fa-solid fa-file-signature" style="color:var(--board);"></i> Form LA-01: Strategic Change Directive</h3>
+        <p class="subtle">
+          Use this form when the Board or Chairman approves a new menu item, CapEx change, or operational policy change.
+          Affixing authority here creates the legal basis for execution and rollout.
+        </p>
 
-          <div class="row-grid cols-2">
-            <div class="form-group">
-              <label for="assignee">Assigned Executive / Implementer</label>
-              <input type="text" id="assignee" class="form-control" value="Hiram Nyingi (General Manager)" required />
-            </div>
-            <div class="form-group">
-              <label for="effectiveDate">Effective Date</label>
-              <input type="date" id="effectiveDate" class="form-control" required />
-            </div>
-          </div>
+        <div class="form-group">
+          <label>Directive Reference ID</label>
+          <input type="text" class="form-control" value="LA-2026-089" readonly>
+        </div>
 
+        <div class="form-group">
+          <label>Authorized Initiator</label>
+          <input type="text" class="form-control" value="Fred Obachi Machoka (Chairman)" readonly>
+        </div>
+
+        <div class="form-group">
+          <label>Item / Change Description</label>
+          <input type="text" class="form-control" id="change-item-name" value="Italian Roast Chicken">
+        </div>
+
+        <div class="row-grid cols-2">
           <div class="form-group">
-            <label for="subjectMatter">Subject / Purpose of Directive</label>
-            <textarea id="subjectMatter" class="form-control" rows="3" placeholder="Describe the operational mandate, menu revision, or asset deployment..." required></textarea>
+            <label>Gross Margin Target (%)</label>
+            <input type="text" class="form-control" value="58.86%">
           </div>
+          <div class="form-group">
+            <label>Max Food Cost (%)</label>
+            <input type="text" class="form-control" value="32.00%">
+          </div>
+        </div>
 
-          <button type="submit" class="btn primary"><i class="fa-solid fa-gears"></i> Generate Legal Form</button>
-        </form>
+        <button class="btn primary" onclick="generateLegalDirective()"><i class="fa-solid fa-pen-nib"></i> Affix Board Authority</button>
 
-        <div id="formOutput" class="form-output"></div>
+        <div id="form-output" class="form-output"></div>
       </div>
     </section>
 
     <section id="ip" class="tab-panel">
       <div class="card">
-        <h3><i class="fa-solid fa-shield-halved" style="color:var(--hr);"></i> Intellectual Property & Recipe Governance Policy</h3>
-        <p class="subtle">Protection matrix for proprietary culinary formulations, brand assets, and operating procedures.</p>
-        
+        <h3><i class="fa-solid fa-shield-halved" style="color:var(--exec);"></i> Recipe Protection & IP Governance</h3>
+        <p class="subtle">
+          Ingredient lists alone are not usually copyrightable. The strongest legal and commercial protection comes from
+          trade-secret controls, confidentiality contracts, and work-for-hire structure.
+        </p>
+
         <table>
           <thead>
             <tr>
-              <th>Asset Category</th>
-              <th>Protected Items</th>
-              <th>Ownership Status</th>
-              <th>Access Level</th>
-              <th>Enforcement Mechanism</th>
+              <th>Protection Layer</th>
+              <th>Legal Mechanism</th>
+              <th>Target Assets</th>
+              <th>Enforcement Tool</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Culinary IP</strong></td>
-              <td>Signature BBQ Sauces, Spice Rubs, Marinades, Ranch Specialty Recipes</td>
-              <td>100% Fred's Ranch Resort Ltd</td>
-              <td>Restricted (Head Chef & GM)</td>
-              <td>NDAs, Non-Compete Clauses & Batch Production Standard Codes</td>
+              <td><strong>Trade secret</strong></td>
+              <td>Protection Against Unfair Competition Act</td>
+              <td>Spice ratios, marination timing, cook steps</td>
+              <td>Form LA-03 recipe NDA signed by BOH staff</td>
             </tr>
             <tr>
-              <td><strong>Brand Identity</strong></td>
-              <td>Logo Mark, Visual Style, "Fred's Ranch" Trademarks & Slogans</td>
-              <td>100% Fred's Ranch Resort Ltd</td>
-              <td>Board Level Approval</td>
-              <td>KIPO Trademark Filings & Brand Guidelines Compliance</td>
+              <td><strong>Literary copyright</strong></td>
+              <td>Copyright Act, 2001 (Kenya)</td>
+              <td>Manuals, videos, photos, training assets</td>
+              <td>Copyright notice on manuals & digital records</td>
             </tr>
             <tr>
-              <td><strong>Operational SOPs</strong></td>
-              <td>Guest Service Workflows, Inventory Auditing, POS Checklists</td>
-              <td>Proprietary Trade Secrets</td>
-              <td>All Management Staff</td>
-              <td>Employee Contracts & Operational Audits</td>
+              <td><strong>Work-for-hire</strong></td>
+              <td>Employment contract clause</td>
+              <td>New techniques developed on company time</td>
+              <td>Automatic IP assignment to the resort</td>
             </tr>
           </tbody>
         </table>
@@ -1347,266 +1464,1112 @@
 
     <section id="sop" class="tab-panel">
       <div class="card">
-        <h3><i class="fa-solid fa-clock-rotate-left" style="color:var(--ops);"></i> Standard Operating Procedure (SOP) Execution Timeline</h3>
-        <p class="subtle">Fast-track workflow for policy decisions, recipe rollouts, and operational adjustments.</p>
+        <h3><i class="fa-solid fa-clock-rotate-left" style="color:var(--board);"></i> Daily Submission Timeline</h3>
+        <p class="subtle">
+          Operational integrity depends on disciplined, time-bound submission windows and digital field compliance.
+        </p>
 
         <table>
           <thead>
             <tr>
-              <th>Timeframe</th>
-              <th>Action Stage</th>
-              <th>Responsible Lead</th>
-              <th>Key Deliverables</th>
+              <th>Time Window</th>
+              <th>Phase</th>
+              <th>Action Required</th>
+              <th>Owner</th>
+              <th>BSC Signal Output</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>T - 00:00 (Hours 0-2)</strong></td>
-              <td>Board Strategy & Approval</td>
-              <td>Chairman / Managing Director</td>
-              <td>Signed Board Resolution & Budget Clearance</td>
+              <td><strong>T-45 min</strong></td>
+              <td>Pre-shift</td>
+              <td>Fetch FO-001, verify OPM-DAILY-001, confirm Mbuzi baseline</td>
+              <td>Duty Supervisor</td>
+              <td>Pre-shift checklist</td>
             </tr>
             <tr>
-              <td><strong>T - 02:00 (Hours 2-6)</strong></td>
-              <td>Executive Briefing & SOP Drafting</td>
-              <td>General Manager (Hiram Nyingi)</td>
-              <td>Operational Implementation Plan & Department Directives</td>
+              <td><strong>T-15 min</strong></td>
+              <td>Briefing</td>
+              <td>Confirm Mbuzi + platter upsell targets</td>
+              <td>Duty Supervisor</td>
+              <td>FO-001 countersigned</td>
             </tr>
             <tr>
-              <td><strong>T - 06:00 (Hours 6-12)</strong></td>
-              <td>Departmental Rollout & Training</td>
-              <td>Operations Lead / Head Chef</td>
-              <td>Staff Briefing, Inventory Procurement & Station Setup</td>
+              <td><strong>15:00</strong></td>
+              <td>Shift 1 close</td>
+              <td>Complete OPM-DAILY-001 and POS revenue summary</td>
+              <td>Supervisor + OM</td>
+              <td>Shift 1 digital form</td>
             </tr>
             <tr>
-              <td><strong>T - 12:00+</strong></td>
-              <td>Full Operational Launch & Control</td>
-              <td>Shift Supervisors & Cashiers</td>
-              <td>Real-time Guest Service, POS Integration & Daily Audit</td>
+              <td><strong>23:00</strong></td>
+              <td>Shift 2 close</td>
+              <td>Shift 2 protocol close; beer reconciliation</td>
+              <td>Supervisor + Finance</td>
+              <td>Shift 2 digital form</td>
+            </tr>
+            <tr>
+              <td><strong>07:00 next day</strong></td>
+              <td>GM morning brief</td>
+              <td>OM compiles consolidated signal brief and transmits to GM</td>
+              <td>OM → GM</td>
+              <td>Morning BSC brief</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
+
+    <!-- ===== HMOS EXTENSION: SCORECARD ===== -->
+    <section id="bsc" class="tab-panel">
+      <div class="section-head">
+        <div class="section-title-wrap">
+          <span class="tier-pill tier-board">BSC Scorecard</span>
+          <span class="tier-desc">Position-based, evidence-gated scoring: Actual → KPI score → weighted contribution → dimension → overall</span>
+        </div>
+      </div>
+
+      <div class="x-grid x-g2">
+        <div class="card">
+          <h3><i class="fa-solid fa-scale-balanced" style="color:var(--board);"></i> Position under appraisal</h3>
+          <div class="x-inputs">
+            <div class="x-field">
+              <label for="bsc-position">Position</label>
+              <select id="bsc-position"></select>
+            </div>
+            <div class="x-field">
+              <label for="bsc-period">Period</label>
+              <select id="bsc-period">
+                <option>Q1 2026</option><option>Q2 2026</option><option selected>Q3 2026</option><option>Q4 2026</option><option>FY 2026</option>
+              </select>
+            </div>
+            <div class="x-field">
+              <label for="bsc-gate">Evidence gate</label>
+              <select id="bsc-gate">
+                <option value="strict" selected>Strict: no evidence = incomplete</option>
+                <option value="soft">Soft: flag only</option>
+              </select>
+            </div>
+          </div>
+          <p class="subtle">
+            Enter the actual result and an identifiable evidence reference per KPI. Under the strict gate, a KPI without
+            evidence is excluded from the score and shown as <em>incomplete</em> instead of being silently converted into a number.
+          </p>
+          <div class="x-note"><strong>Illustrative defaults.</strong> Targets and weights below are starting values for the design;
+            replace them with the approved KPI dictionary before using the score for appraisal.</div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fa-solid fa-gauge-high" style="color:var(--fin);"></i> Result</h3>
+          <div class="x-score-ring" id="bsc-ring"><div><span><b id="bsc-overall">0</b><small>Overall BSC</small></span></div></div>
+          <p class="subtle" style="text-align:center;margin-top:8px;" id="bsc-verdict">Enter actuals to score.</p>
+          <div id="bsc-dims" style="margin-top:8px;"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-table-list" style="color:var(--exec);"></i> KPI dictionary and scoring</h3>
+        <div class="x-table-wrap">
+          <table class="x-table" id="bsc-table">
+            <thead>
+              <tr>
+                <th>Dimension</th><th>KPI</th><th>Dir.</th><th>Target</th><th>Actual</th>
+                <th>Evidence ref.</th><th>Weight</th><th>KPI score</th><th>Contribution</th><th>Status</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="x-actions">
+          <button class="btn primary" onclick="bscResetDemo()"><i class="fa-solid fa-wand-magic-sparkles"></i> Load demo data</button>
+          <button class="btn" onclick="bscClear()"><i class="fa-solid fa-eraser"></i> Clear actuals</button>
+          <button class="btn" onclick="exportBscCsv()"><i class="fa-solid fa-file-csv"></i> Export CSV</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-user-check" style="color:var(--new);"></i> Managerial control test</h3>
+        <p class="subtle">
+          The result is not the same as the manager’s contribution. The evaluator records what the position actually
+          <em>caused, coordinated, controlled, escalated, followed up</em> and <em>institutionalized</em>, each with a reference.
+        </p>
+        <div class="x-grid x-g3" id="control-test"></div>
+        <div style="display:flex;align-items:center;gap:12px;margin-top:6px;">
+          <div class="x-bar" style="flex:1;"><span id="ct-bar" style="width:0%"></span></div>
+          <span class="x-status x-info" id="ct-score">0 / 6 verified</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EVIDENCE + CAPA ===== -->
+    <section id="evidence" class="tab-panel">
+      <div class="section-head">
+        <div class="section-title-wrap">
+          <span class="tier-pill tier-ops">Evidence &amp; CAPA</span>
+          <span class="tier-desc">Register, corrective-action chain and institutionalization</span>
+        </div>
+      </div>
+
+      <div class="row-grid cols-4">
+        <div class="stat-box"><div class="stat-label">Evidence completeness</div><div class="stat-val" id="ev-complete" style="color:var(--fin);">–</div></div>
+        <div class="stat-box"><div class="stat-label">Open CAPA</div><div class="stat-val" id="ev-open" style="color:var(--board);">0</div></div>
+        <div class="stat-box"><div class="stat-label">Overdue</div><div class="stat-val" id="ev-overdue" style="color:var(--cut);">0</div></div>
+        <div class="stat-box"><div class="stat-label">Institutionalized</div><div class="stat-val" id="ev-inst" style="color:var(--new);">0</div></div>
+      </div>
+
+      <div class="x-grid x-g2">
+        <div class="card">
+          <h3><i class="fa-solid fa-plus" style="color:var(--board);"></i> Log a corrective action</h3>
+          <div class="x-inputs">
+            <div class="x-field"><label for="capa-issue">Variance / issue</label><input id="capa-issue" placeholder="e.g. Beer reconciliation gap on Shift 2"></div>
+            <div class="x-field"><label for="capa-owner">Owner (position)</label><select id="capa-owner"></select></div>
+            <div class="x-field"><label for="capa-due">Due date</label><input id="capa-due" type="date"></div>
+            <div class="x-field"><label for="capa-inst">Institutionalize as</label>
+              <select id="capa-inst">
+                <option>SOP update</option><option>Training</option><option>Audit / check</option>
+                <option>Escalation rule</option><option>Control / approval</option>
+              </select>
+            </div>
+          </div>
+          <div class="x-actions">
+            <button class="btn primary" onclick="addCapa()"><i class="fa-solid fa-plus"></i> Add to register</button>
+            <button class="btn" onclick="exportCapaJson()"><i class="fa-solid fa-file-code"></i> Export JSON</button>
+          </div>
+          <div class="x-note">Chain: variance → action → owner → due date → verification → institutionalization. An action is only closed once it has been verified.</div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fa-solid fa-shield-check" style="color:var(--fin);"></i> Evidence gate rules</h3>
+          <div class="x-chain" style="--c: var(--fin);">
+            <div class="lvl"><i class="fa-solid fa-1"></i><b>Identifiable</b><span>The record names a register, checklist, audit, log or system export.</span></div>
+            <div class="lvl"><i class="fa-solid fa-2"></i><b>Retrievable</b><span>Someone other than the author can find it within the review window.</span></div>
+            <div class="lvl"><i class="fa-solid fa-3"></i><b>Dated &amp; owned</b><span>A custodian and a date are recorded on the record.</span></div>
+            <div class="lvl"><i class="fa-solid fa-4"></i><b>Verified</b><span>A reviewer confirms the evidence supports the number.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-list-check" style="color:var(--ops);"></i> CAPA register</h3>
+        <div class="x-chip-row" id="capa-filters">
+          <button class="x-chip on" data-f="all">All</button>
+          <button class="x-chip" data-f="open">Open</button>
+          <button class="x-chip" data-f="verified">Verified</button>
+          <button class="x-chip" data-f="closed">Institutionalized</button>
+          <button class="x-chip" data-f="overdue">Overdue</button>
+        </div>
+        <div class="x-table-wrap">
+          <table class="x-table" id="capa-table">
+            <thead><tr><th>ID</th><th>Issue</th><th>Owner</th><th>Due</th><th>Institutionalize as</th><th>Status</th><th>Advance</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTROL LOOP & RHYTHM ===== -->
+    <section id="rhythm" class="tab-panel">
+      <div class="section-head">
+        <div class="section-title-wrap">
+          <span class="tier-pill tier-exec">Control Loop</span>
+          <span class="tier-desc">From expected condition to institutional memory, run on a fixed management rhythm</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-arrows-spin" style="color:var(--board);"></i> The core control loop</h3>
+        <p class="subtle">Select a step to see what management must do and what proves it.</p>
+        <div class="x-loop" id="loop-steps"></div>
+        <div class="x-loop-detail" id="loop-detail"></div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-layer-group" style="color:var(--exec);"></i> Operating chain: strategy to institutional memory</h3>
+        <div class="x-chain" id="op-chain"></div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-calendar-check" style="color:var(--fin);"></i> Management rhythm</h3>
+        <p class="subtle">Tick items as they are completed; progress is calculated per cadence.</p>
+        <div class="x-cal" id="rhythm-cal"></div>
+      </div>
+    </section>
+
+    <!-- ===== BACKWARD PLAN ===== -->
+    <section id="backward" class="tab-panel">
+      <div class="section-head">
+        <div class="section-title-wrap">
+          <span class="tier-pill tier-fin">Backward Plan</span>
+          <span class="tier-desc">Start from the revenue and margin target, then derive roles, money and constraints</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-bullseye" style="color:var(--fin);"></i> Targets</h3>
+        <div class="x-inputs">
+          <div class="x-field"><label for="bp-rev">Annual revenue target (KES)</label><input id="bp-rev" type="number" value="120000000" min="0"></div>
+          <div class="x-field"><label for="bp-gp">Gross profit target (%)</label><input id="bp-gp" type="number" value="58.86" step="0.01"></div>
+          <div class="x-field"><label for="bp-days">Trading days / year</label><input id="bp-days" type="number" value="360"></div>
+          <div class="x-field"><label for="bp-check">Average check (KES)</label><input id="bp-check" type="number" value="1800"></div>
+          <div class="x-field"><label for="bp-pay">Payroll share of revenue (%)</label><input id="bp-pay" type="number" value="24" step="0.5"></div>
+          <div class="x-field"><label for="bp-hours">Trading hours / day</label><input id="bp-hours" type="number" value="14"></div>
+        </div>
+        <div class="row-grid cols-4" style="margin-bottom:0;">
+          <div class="stat-box"><div class="stat-label">Revenue / day</div><div class="stat-val" id="bp-o-day">–</div></div>
+          <div class="stat-box"><div class="stat-label">Covers / day</div><div class="stat-val" id="bp-o-cov">–</div></div>
+          <div class="stat-box"><div class="stat-label">Gross profit / year</div><div class="stat-val" id="bp-o-gp">–</div></div>
+          <div class="stat-box"><div class="stat-label">Payroll budget / year</div><div class="stat-val" id="bp-o-pay">–</div></div>
+        </div>
+        <div class="x-note"><strong>Model, not a forecast.</strong> Defaults are placeholders except the 58.86% GP figure that already appears in the legal directive. Replace all values with figures from POS and accounting.</div>
+      </div>
+
+      <div class="x-grid x-g2">
+        <div class="card">
+          <h3><i class="fa-solid fa-coins" style="color:var(--board);"></i> Money and accountability by position</h3>
+          <div class="x-table-wrap">
+            <table class="x-table" id="bp-roles" style="min-width:520px;">
+              <thead><tr><th>Position</th><th>Share %</th><th>KES / year</th><th>Controls</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <p class="subtle" style="margin-top:8px;">Shares are editable and describe the revenue each position is accountable for or the budget it controls, not pay.</p>
+          <div class="x-status" id="bp-share-check" style="margin-top:6px;"></div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fa-solid fa-diagram-project" style="color:var(--cut);"></i> Bottleneck finder</h3>
+          <p class="subtle">Capacity per hour at each stage against the demand implied above. The lowest-capacity stage caps throughput.</p>
+          <div class="x-table-wrap">
+            <table class="x-table" id="bp-stages" style="min-width:380px;">
+              <thead><tr><th>Stage</th><th>Covers / hr capacity</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="x-flow" id="bp-flow"></div>
+          <div class="x-loop-detail" id="bp-verdict" style="margin-top:8px;"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-lightbulb" style="color:var(--new);"></i> Constraints and opportunities</h3>
+        <div class="row-grid cols-3" style="margin-bottom:0;">
+          <div class="card" style="margin:0;"><h3 style="font-size:13px;">Constraints</h3>
+            <p class="subtle">Peak-hour kitchen throughput, cold-chain and storage limits, single-supplier dependencies, and staffing between shifts.</p></div>
+          <div class="card" style="margin:0;"><h3 style="font-size:13px;">Opportunities</h3>
+            <p class="subtle">Upsell targets already set in the daily briefing, platter mix, direct-to-customer sales and off-peak event bookings.</p></div>
+          <div class="card" style="margin:0;"><h3 style="font-size:13px;">Best path</h3>
+            <p class="subtle">Remove the tightest stage first, then raise average check. Confirm with two weeks of POS data before committing budget.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== THEORY, RISKS, ROADMAP ===== -->
+    <section id="theory" class="tab-panel">
+      <div class="section-head">
+        <div class="section-title-wrap">
+          <span class="tier-pill tier-hr">HMOS Theory</span>
+          <span class="tier-desc">Propositions, risks and implementation roadmap from the 2026 white paper</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-book-open" style="color:var(--board);"></i> Three evidence layers</h3>
+        <div class="x-grid x-g3" style="margin:10px 0 0;">
+          <div class="x-prop" open><div class="body" style="padding:12px;"><span class="x-status x-ok">Established</span>
+            <p>Hospitality BSC research supports multidimensional performance management (Fatima &amp; Elbanna, 2020; Elbanna et al., 2015, 2021).</p></div></div>
+          <div class="x-prop"><div class="body" style="padding:12px;"><span class="x-status x-info">Source-derived</span>
+            <p>The Fred’s Ranch architecture: positions, KPIs, evidence gate, management rhythm, CAPA and institutionalization.</p></div></div>
+          <div class="x-prop"><div class="body" style="padding:12px;"><span class="x-status x-new">Proposition</span>
+            <p>A digital operating system with integrated data, analytics and AI decision support. This still has to be tested, not assumed.</p></div></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-flask" style="color:var(--exec);"></i> Testable propositions</h3>
+        <div id="prop-list" style="display:grid;gap:8px;"></div>
+      </div>
+
+      <div class="x-grid x-g2">
+        <div class="card">
+          <h3><i class="fa-solid fa-triangle-exclamation" style="color:var(--cut);"></i> Risks and control principles</h3>
+          <div class="x-table-wrap">
+            <table class="x-table" id="risk-table" style="min-width:420px;">
+              <thead><tr><th>Risk</th><th>Control principle</th><th>Rating</th></tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3><i class="fa-solid fa-road" style="color:var(--fin);"></i> Implementation roadmap</h3>
+          <div class="x-timeline" id="roadmap"></div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div class="x-bar" style="flex:1;"><span id="road-bar" style="width:0%"></span></div>
+            <span class="x-status x-info" id="road-pct">0%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-robot" style="color:var(--new);"></i> Future principle</h3>
+        <p class="subtle">AI should not be the authority in the system. It can process evidence and support decisions, while authorization, accountability, interpretation and governance stay with human managers.</p>
+        <div class="x-note"><strong>Definition (HMOS).</strong> A role-based, evidence-gated management architecture that translates strategy into operational conditions, tests managerial control, coordinates cross-department dependencies, closes corrective actions and converts verified learning into institutional memory.</div>
+      </div>
+    </section>
+
+    <!-- ===== COMPARISON, INTEGRATION, FUTURE ===== -->
+    <section id="future" class="tab-panel">
+      <div class="section-head">
+        <div class="section-title-wrap">
+          <span class="tier-pill tier-exec">Compare &amp; Future</span>
+          <span class="tier-desc">How HMOS differs from a fragmented environment, what systems already exist, and the staged path ahead</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-code-compare" style="color:var(--board);"></i> Fragmented environment vs Fred’s Ranch architecture</h3>
+        <p class="subtle">A conceptual comparison, not a claim that every restaurant works the same way.</p>
+        <div class="x-chip-row" id="cmp-filters">
+          <button class="x-chip on" data-f="all">All dimensions</button>
+          <button class="x-chip" data-f="control">Control</button>
+          <button class="x-chip" data-f="data">Data</button>
+          <button class="x-chip" data-f="learning">Learning</button>
+        </div>
+        <div class="x-table-wrap">
+          <table class="x-table" id="cmp-table" style="min-width:640px;">
+            <thead><tr><th>Dimension</th><th>Fragmented / conventional</th><th>Fred’s Ranch architecture</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-plug" style="color:var(--ops);"></i> Existing capability and the integration gap</h3>
+        <div class="x-field" style="max-width:320px;margin:8px 0;">
+          <label for="int-search">Filter systems</label>
+          <input id="int-search" type="search" placeholder="e.g. POS, HR, accounting">
+        </div>
+        <div class="x-table-wrap">
+          <table class="x-table" id="int-table" style="min-width:560px;">
+            <thead><tr><th>System</th><th>Typical value</th><th>Integration addressed</th><th>Connected?</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;margin-top:10px;">
+          <div class="x-bar" style="flex:1;"><span id="int-bar" style="width:0%"></span></div>
+          <span class="x-status x-info" id="int-pct">0 / 0 connected</span>
+        </div>
+        <div class="x-note">Use the “Connected?” toggle to track which sources feed the evidence layer today. This is a self-assessment; nothing is transmitted.</div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-stairs" style="color:var(--new);"></i> From BSC to an adaptive operating system</h3>
+        <div class="x-loop" id="stage-steps"></div>
+        <div class="x-loop-detail" id="stage-detail"></div>
+      </div>
+
+      <div class="card">
+        <h3><i class="fa-solid fa-microscope" style="color:var(--fin);"></i> Research questions to make this a genuine contribution</h3>
+        <div class="x-table-wrap">
+          <table class="x-table" id="rq-table" style="min-width:620px;">
+            <thead><tr><th>Question</th><th>Measure</th><th>Evidence source</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="x-note"><strong>Caveat.</strong> The system design is not evidence of effect. Claims about financial or guest-experience gains need longitudinal data, controlled for demand.</div>
+      </div>
+    </section>
   </main>
+  <div class="x-toast" id="x-toast" role="status" aria-live="polite"></div>
 
   <div class="summary-strip">
     <div class="summary-inner">
       <div class="stat-box">
-        <div class="stat-label">Board Oversight</div>
-        <div class="stat-val" style="color:var(--board);">6 Directors</div>
+        <div class="stat-label">Enterprise GP target</div>
+        <div class="stat-val" style="color:var(--fin);">≥58.86%</div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">Executive Command</div>
-        <div class="stat-val" style="color:var(--exec);">4 Leaders</div>
+        <div class="stat-label">F&amp;B cost control</div>
+        <div class="stat-val" style="color:var(--ops);">≤28–32%</div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">Operational Units</div>
-        <div class="stat-val" style="color:var(--ops);">4 Depts</div>
+        <div class="stat-label">Revenue target</div>
+        <div class="stat-val" style="color:var(--board);">KES 180M–220M</div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">Governance Status</div>
-        <div class="stat-val" style="color:var(--fin);">Active v2.0</div>
+        <div class="stat-label">EBITDA</div>
+        <div class="stat-val" style="color:var(--exec);">≥22–25%</div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">Execution Cycle</div>
-        <div class="stat-val" style="color:var(--new);">Under 12 Hrs</div>
+        <div class="stat-label">Culture index</div>
+        <div class="stat-val" style="color:var(--hr);">≥90%</div>
       </div>
     </div>
   </div>
 
-  <!-- MODAL -->
-  <div id="modal-overlay" onclick="closeModal(event)">
-    <div id="modal-box">
+  <div id="modal-overlay" onclick="closeModal()">
+    <div id="modal-box" onclick="event.stopPropagation()">
       <div id="modal-header">
-        <div class="tier-pill tier-board" id="modal-tier">Tier Detail</div>
-        <div id="modal-name">Name</div>
-        <div id="modal-role">Role Description</div>
+        <div class="tier-pill tier-board" id="modal-tier-pill" style="display:inline-block;">Tier 1</div>
+        <div id="modal-name">Fred Obachi Machoka</div>
+        <div id="modal-role">Chairman</div>
       </div>
       <div id="modal-body">
         <div>
-          <div class="modal-field-label">Core Mandate & Directives</div>
-          <div class="modal-field-value" id="modal-mandate">-</div>
+          <div class="modal-field-label">Department / Unit</div>
+          <div class="modal-field-value" id="modal-dept">Board of Directors</div>
         </div>
         <div>
-          <div class="modal-field-label">Primary Performance Metrics (KPIs)</div>
-          <div class="modal-field-value" id="modal-kpis">-</div>
+          <div class="modal-field-label">Scope</div>
+          <div class="modal-field-value" id="modal-scope">Strategic governance and direct policy oversight.</div>
         </div>
         <div>
-          <div class="modal-field-label">Reporting Line & Governance Contact</div>
-          <div class="modal-field-value" id="modal-reporting">-</div>
+          <div class="modal-field-label">Reports To</div>
+          <div class="modal-field-value" id="modal-reports">Board / shareholders</div>
+        </div>
+        <div>
+          <div class="modal-field-label">Key KPIs / Controls</div>
+          <div class="modal-field-value" id="modal-kpis">Governance alignment, brand integrity, growth decisions.</div>
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn" onclick="closeModalForce()">Close</button>
+        <button class="btn" onclick="closeModal()">Close</button>
       </div>
     </div>
   </div>
 
   <script>
-    // Tab Switching
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-        
-        btn.classList.add('active');
-        const tabId = btn.getAttribute('data-tab');
-        document.getElementById(tabId).classList.add('active');
-      });
-    });
-
-    // Profile Data for Modal
-    const profiles = {
+    const teamData = {
       fred_machoka: {
-        name: "Fred Obachi Machoka",
-        role: "Chairman of the Board",
-        tier: "Tier 1 — Board",
-        mandate: "Overall brand leadership, strategic vision, external stakeholder relations, and high-level corporate governance.",
-        kpis: "Brand equity preservation, long-term enterprise value growth, board alignment.",
-        reporting: "Reports to Shareholders; Directs Managing Director & General Manager."
+        name: 'Fred Obachi Machoka',
+        role: 'Chairman',
+        tier: 'Tier 1',
+        tierClass: 'tier-board',
+        dept: 'Board of Directors',
+        scope: 'Apex governance, strategic vision, brand protection, and final policy sign-off.',
+        reports: 'Shareholders / Board',
+        kpis: 'Strategic board resolutions • Governance integrity • Brand protection'
       },
       sophie_namuyonga: {
-        name: "Sophie Namuyonga",
-        role: "Vice-Chairlady",
-        tier: "Tier 1 — Board",
-        mandate: "Governance oversight, ethical compliance, internal audit verification, and board committee leadership.",
-        kpis: "Audit compliance rates, governance risk mitigation, board procedural integrity.",
-        reporting: "Board of Directors."
+        name: 'Sophie Namuyonga',
+        role: 'Vice-Chairlady',
+        tier: 'Tier 1',
+        tierClass: 'tier-board',
+        dept: 'Board of Directors',
+        scope: 'Ethics oversight, governance review, and independent accountability.',
+        reports: 'Board of Directors',
+        kpis: 'Audit review • Governance oversight • Board assurance'
       },
       victor_machoka: {
-        name: "Victor Keari Machoka",
-        role: "Managing Director",
-        tier: "Tier 1 — Board",
-        mandate: "Capital expenditure strategies, asset development, expansion projects, and board directive translation.",
-        kpis: "CapEx ROI, infrastructure growth targets, enterprise profitability.",
-        reporting: "Reports to Chairman & Board; Directs Executive Management."
+        name: 'Victor Keari Machoka',
+        role: 'Managing Director',
+        tier: 'Tier 1',
+        tierClass: 'tier-board',
+        dept: 'Board of Directors',
+        scope: 'CapEx direction, board performance oversight, and strategic growth review.',
+        reports: 'Full Board',
+        kpis: 'EBITDA targets • CapEx approvals • Growth review'
       },
       angel_machoka: {
-        name: "Angel Omari Machoka",
-        role: "Director — Brand Strategy",
-        tier: "Tier 1 — Board",
-        mandate: "Brand positioning, marketing strategies, public relations policy, and guest experience benchmarks.",
-        kpis: "Brand reach, market penetration, customer sentiment scores.",
-        reporting: "Board of Directors."
+        name: 'Angel Omari Machoka',
+        role: 'Director',
+        tier: 'Tier 1',
+        tierClass: 'tier-board',
+        dept: 'Board of Directors',
+        scope: 'Governance oversight, public sentiment, and brand strategy review.',
+        reports: 'Board of Directors',
+        kpis: 'Brand strategy • PR policy • Compliance review'
       },
       santos_machoka: {
-        name: "Santos Omae Machoka",
-        role: "Sales & HR Director",
-        tier: "Tier 1 — Board",
-        mandate: "Commercial growth oversight, executive talent strategy, commercial revenue streams, and high-level HR alignment.",
-        kpis: "Sales growth trajectories, executive retention rates, labor alignment.",
-        reporting: "Board of Directors."
+        name: 'Santos Omae Machoka',
+        role: 'Sales & HR Director',
+        tier: 'Tier 1',
+        tierClass: 'tier-board',
+        dept: 'Board of Directors',
+        scope: 'Commercial strategy and people-policy oversight at board level.',
+        reports: 'Board of Directors',
+        kpis: 'Commercial growth • HR policy • Workforce direction'
       },
       linda_machoka: {
-        name: "Linda Machoka",
-        role: "Director — Legal & Compliance",
-        tier: "Tier 1 — Board",
-        mandate: "Statutory compliance, legal risk management, contract enforcement, and IP protection policy.",
-        kpis: "100% legal compliance, zero unmitigated liability exposure, IP registration integrity.",
-        reporting: "Board of Directors."
+        name: 'Linda Machoka',
+        role: 'Director',
+        tier: 'Tier 1',
+        tierClass: 'tier-board',
+        dept: 'Board of Directors',
+        scope: 'Legal, compliance, contract governance and stakeholder oversight.',
+        reports: 'Board of Directors',
+        kpis: 'Legal risk management • Statutory compliance • Contracting'
       },
       hiram_nyingi: {
-        name: "Hiram Nyingi",
-        role: "General Manager",
-        tier: "Tier 2 — Executive",
-        mandate: "End-to-end operational execution, revenue target delivery, cross-departmental coordination, and daily leadership.",
-        kpis: "Revenue: KES 180M–220M, EBITDA Margin: ≥22–25%, Operational Efficiency.",
-        reporting: "Reports directly to Chairman & Board; Manages Department Heads."
+        name: 'Hiram Nyingi',
+        role: 'General Manager',
+        tier: 'Tier 2',
+        tierClass: 'tier-exec',
+        dept: 'Executive Committee',
+        scope: 'Single point of accountability between policy direction and operations execution.',
+        reports: 'Full Board',
+        kpis: 'Revenue target • EBITDA • CSAT • Daily BSC execution'
       },
       chris_mutinda: {
-        name: "CPA Chris Mutinda",
-        role: "Chief Accountant",
-        tier: "Tier 2 — Executive",
-        mandate: "Financial control, fiscal compliance, cost auditing, budget variance tracking, and cashflow management.",
-        kpis: "Budget Variance: ±2–5%, Gross Profit Target: ≥58.86%, Zero unverified leakage.",
-        reporting: "Reports to General Manager & Board Audit Committee."
+        name: 'CPA Chris Mutinda',
+        role: 'Chief Accountant',
+        tier: 'Tier 2',
+        tierClass: 'tier-fin',
+        dept: 'Finance Department',
+        scope: 'Fiscal control, payroll, pos reconciliation, cash controls and financial reporting.',
+        reports: 'Board & GM',
+        kpis: 'GP target • Payroll accuracy • Audit log integrity'
       },
       reagan_ogol: {
-        name: "Reagan Ogol",
-        role: "Operations Manager",
-        tier: "Tier 2 — Executive",
-        mandate: "Shift operations command, guest service flow, logistics oversight, and facility upkeep coordination.",
-        kpis: "Efficiency Index: ≥90–95%, F&B Cost: ≤28.5%, Guest Satisfaction: ≥95%.",
-        reporting: "Reports to General Manager."
+        name: 'Reagan Ogol',
+        role: 'Operations Manager',
+        tier: 'Tier 2',
+        tierClass: 'tier-ops',
+        dept: 'Operations Command',
+        scope: 'Shift command, SOP adherence, operational speed and delivery quality.',
+        reports: 'General Manager',
+        kpis: 'Efficiency index • Prep compliance • Shift execution'
       },
-      hr_head: {
-        name: "Talent & Operations Lead",
-        role: "Head of HR & Culture",
-        tier: "Tier 2 — Executive",
-        mandate: "Staff recruitment, training, performance evaluations, labor policy compliance, and cultural alignment.",
-        kpis: "Staff Retention: ≥85%, Training Compliance: 100%, HR Policy Adherence.",
-        reporting: "Reports to General Manager & Sales/HR Director."
+      albert_maroa: {
+        name: 'Albert Maroa',
+        role: 'People & Culture Manager',
+        tier: 'Tier 2',
+        tierClass: 'tier-hr',
+        dept: 'People & Culture',
+        scope: 'HR strategy, staff discipline, training, culture, and labour compliance.',
+        reports: 'Board & GM',
+        kpis: 'Turnover rate • Culture index • Staff retention'
       }
     };
 
-    function openModal(profileKey) {
-      const p = profiles[profileKey];
-      if (!p) return;
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    tabButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
 
-      document.getElementById('modal-tier').innerText = p.tier;
-      document.getElementById('modal-name').innerText = p.name;
-      document.getElementById('modal-role').innerText = p.role;
-      document.getElementById('modal-mandate').innerText = p.mandate;
-      document.getElementById('modal-kpis').innerText = p.kpis;
-      document.getElementById('modal-reporting').innerText = p.reporting;
+        const target = button.dataset.tab;
+        document.querySelectorAll('.tab-panel').forEach(panel => {
+          panel.classList.toggle('active', panel.id === target);
+        });
+      });
+    });
 
-      document.getElementById('modal-overlay').classList.add('open');
+    function openModal(key) {
+      const item = teamData[key];
+      if (!item) return;
+
+      const modal = document.getElementById('modal-overlay');
+      const tierPill = document.getElementById('modal-tier-pill');
+      tierPill.className = 'tier-pill ' + item.tierClass;
+      tierPill.textContent = item.tier;
+
+      document.getElementById('modal-name').textContent = item.name;
+      document.getElementById('modal-role').textContent = item.role;
+      document.getElementById('modal-dept').textContent = item.dept;
+      document.getElementById('modal-scope').textContent = item.scope;
+      document.getElementById('modal-reports').textContent = item.reports;
+      document.getElementById('modal-kpis').textContent = item.kpis;
+
+      modal.classList.add('open');
     }
 
-    function closeModal(event) {
-      if (event.target.id === 'modal-overlay') {
-        document.getElementById('modal-overlay').classList.remove('open');
-      }
-    }
-
-    function closeModalForce() {
+    function closeModal() {
       document.getElementById('modal-overlay').classList.remove('open');
     }
 
-    // Set Default Date in Legal Form
-    document.getElementById('effectiveDate').value = new Date().toISOString().split('T')[0];
+    function generateLegalDirective() {
+      const itemName = document.getElementById('change-item-name').value || 'Approved strategic item';
+      const output = document.getElementById('form-output');
 
-    function generateLegalDoc(e) {
-      e.preventDefault();
-      const docType = document.getElementById('docType').value;
-      const authorizer = document.getElementById('authorizer').value;
-      const assignee = document.getElementById('assignee').value;
-      const effectiveDate = document.getElementById('effectiveDate').value;
-      const subjectMatter = document.getElementById('subjectMatter').value;
-
-      const outputBox = document.getElementById('formOutput');
-      outputBox.style.display = 'block';
-
-      outputBox.innerHTML = `
-================================================================================
-FRED'S RANCH RESORT — OFFICIAL BOARD DIRECTIVE & INSTRUMENT
-================================================================================
-DOCUMENT TYPE: ${docType.toUpperCase()}
-DATE OF ISSUANCE: ${effectiveDate}
-AUTHORIZING BODY: ${authorizer}
-EXECUTING OFFICER: ${assignee}
-
-SUBJECT / MANDATE:
---------------------------------------------------------------------------------
-${subjectMatter}
-
-LEGAL & OPERATIONAL PROVISIONS:
-1. AUTHORITY: This directive is issued under the corporate governance charter of
-   Fred's Ranch Resort Ltd and carries immediate operational validity.
-2. EXECUTION: The assigned executing officer is authorized and instructed to implement
-   the actions detailed above in compliance with resort SOPs and budget frameworks.
-3. COMPLIANCE: Any deviation from this directive must be reported to the Legal & 
-   Compliance Director within 24 hours of identification.
-
-CONFIRMED AND ISSUED BY:
-
-________________________________________
-${authorizer}
-Board of Directors, Fred's Ranch Resort
-================================================================================
+      output.style.display = 'block';
+      output.innerHTML = `
+<strong>[FORM LA-01: STRATEGIC CHANGE DIRECTIVE ISSUED]</strong><br><br>
+<strong>Reference ID:</strong> LA-2026-089<br>
+<strong>Authority:</strong> Fred Obachi Machoka (Chairman)<br>
+<strong>Directive Item:</strong> ${itemName}<br>
+<strong>Preconditions:</strong><br>
+1. GP Target verified at ≥ 58.86%.<br>
+2. Trade Secret NDA (Form LA-03) dispatched to BOH kitchen staff.<br>
+3. Food safety certification verified under applicable Kenyan standards.<br><br>
+<em>Status: Affixed with executive authority and transmitted to the General Manager for operational rollout.</em>
       `;
     }
+
+    /* ===== HMOS EXTENSION v3.0 ===== */
+    const $ = (id) => document.getElementById(id);
+    const fmt = (n) => Number.isFinite(n) ? Math.round(n).toLocaleString('en-US') : '–';
+    const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    let toastTimer;
+    function toast(msg) {
+      const t = $('x-toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+    }
+    function download(name, text, type) {
+      const url = URL.createObjectURL(new Blob([text], { type }));
+      const a = document.createElement('a');
+      a.href = url; a.download = name; document.body.appendChild(a); a.click();
+      a.remove(); setTimeout(() => URL.revokeObjectURL(url), 500);
+    }
+
+    /* ---------- Logo ---------- */
+    function applyLogo(src) {
+      const mark = document.querySelector('.brand-mark');
+      mark.classList.add('has-logo');
+      mark.innerHTML = '<img alt="Fred\u2019s Ranch logo" src="' + src + '">';
+    }
+    $('logo-input').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      if (!/^image\//.test(file.type)) { toast('Please choose an image file.'); return; }
+      const reader = new FileReader();
+      reader.onload = () => { applyLogo(reader.result); toast('Logo applied.'); };
+      reader.readAsDataURL(file);
+    });
+
+    /* ---------- Tab helpers: deep links ---------- */
+    function setHash(id) { try { history.replaceState(null, '', '#' + id); } catch (err) { /* ignored: not available in sandboxed frames */ } }
+    function goTab(id) {
+      const btn = document.querySelector('[data-tab="' + id + '"]');
+      if (btn) { btn.click(); setHash(id); window.scrollTo({ top: 0 }); }
+    }
+    document.querySelectorAll('.tab-btn').forEach((b) => b.addEventListener('click', () => setHash(b.dataset.tab)));
+    if (location.hash) { const h = location.hash.slice(1); if (document.getElementById(h)) goTab(h); }
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    /* ---------- Positions (from existing teamData) ---------- */
+    const positions = Object.entries(teamData).map(([k, v]) => ({ key: k, label: v.role + ' \u2014 ' + v.name }));
+    ['bsc-position', 'capa-owner'].forEach((id) => {
+      $(id).innerHTML = positions.map((p) => '<option value="' + p.key + '">' + esc(p.label) + '</option>').join('');
+    });
+    $('bsc-position').value = 'reagan_ogol';
+
+    /* ---------- BSC engine ---------- */
+    const dimensions = {
+      fin: { label: 'Financial', color: 'var(--fin)' },
+      guest: { label: 'Guest & Service', color: 'var(--exec)' },
+      proc: { label: 'Internal Process & Control', color: 'var(--ops)' },
+      people: { label: 'People & Learning', color: 'var(--hr)' },
+      safety: { label: 'Safety & Sustainability', color: 'var(--new)' }
+    };
+    const kpis = [
+      { id: 'k1', dim: 'fin', name: 'Gross profit %', dir: 'up', target: 58.86, weight: 15, demo: 57.9, ev: 'POS-GP-Q3' },
+      { id: 'k2', dim: 'fin', name: 'Revenue vs plan (KES m)', dir: 'up', target: 30, weight: 10, demo: 28.4, ev: 'ACC-REV-09' },
+      { id: 'k3', dim: 'fin', name: 'Cash / beer variance (KES k)', dir: 'down', target: 20, weight: 5, demo: 26, ev: '' },
+      { id: 'k4', dim: 'guest', name: 'CSAT (1\u20135)', dir: 'up', target: 4.5, weight: 10, demo: 4.4, ev: 'FB-LOG-Q3' },
+      { id: 'k5', dim: 'guest', name: 'Complaint closure \u2264 24h (%)', dir: 'up', target: 95, weight: 10, demo: 91, ev: 'SR-REG-Q3' },
+      { id: 'k6', dim: 'proc', name: 'SOP / prep compliance (%)', dir: 'up', target: 95, weight: 15, demo: 93, ev: 'OPM-DAILY-001' },
+      { id: 'k7', dim: 'proc', name: 'Handover failures / month', dir: 'down', target: 4, weight: 10, demo: 6, ev: 'HO-LOG-Q3' },
+      { id: 'k8', dim: 'people', name: 'Staff turnover (%)', dir: 'down', target: 12, weight: 10, demo: 15, ev: 'HR-TRN-Q3' },
+      { id: 'k9', dim: 'people', name: 'Training completion (%)', dir: 'up', target: 90, weight: 5, demo: 82, ev: '' },
+      { id: 'k10', dim: 'safety', name: 'Food-safety audit score (%)', dir: 'up', target: 98, weight: 10, demo: 97, ev: 'FS-AUD-Q3' }
+    ];
+    const state = { actuals: {}, evidence: {} };
+    const controlItems = [
+      ['Caused', 'Created the required operating condition (e.g. new checklist, rota rule).'],
+      ['Coordinated', 'Aligned two or more departments on a shared dependency.'],
+      ['Controlled', 'Ran the check or approval that keeps the condition in place.'],
+      ['Escalated', 'Raised a variance to the right authority within the window.'],
+      ['Followed up', 'Verified that the agreed action was completed.'],
+      ['Institutionalized', 'Converted the fix into an SOP, training, audit or control.']
+    ];
+    const ctState = controlItems.map(() => ({ on: false, ref: '' }));
+
+    function kpiScore(k, actual) {
+      if (actual === '' || actual === null || !Number.isFinite(actual)) return null;
+      const raw = k.dir === 'up' ? actual / k.target : (actual <= 0 ? 1 : k.target / actual);
+      return Math.max(0, Math.min(1, raw)) * 100;
+    }
+    function buildBscTable() {
+      $('bsc-table').querySelector('tbody').innerHTML = kpis.map((k) => (
+        '<tr data-id="' + k.id + '">' +
+        '<td><span class="x-status" style="background:transparent;color:' + dimensions[k.dim].color + ';border:1px solid ' + dimensions[k.dim].color + ';">' + esc(dimensions[k.dim].label) + '</span></td>' +
+        '<td>' + esc(k.name) + '</td>' +
+        '<td>' + (k.dir === 'up' ? '\u2191 higher' : '\u2193 lower') + '</td>' +
+        '<td>' + k.target + '</td>' +
+        '<td><input type="number" step="any" data-kind="actual" aria-label="Actual for ' + esc(k.name) + '"></td>' +
+        '<td><input type="text" data-kind="ev" placeholder="register / doc ID" aria-label="Evidence for ' + esc(k.name) + '"></td>' +
+        '<td>' + k.weight + '</td>' +
+        '<td class="c-score">–</td><td class="c-contrib">–</td><td class="c-status"></td></tr>'
+      )).join('');
+      $('bsc-table').querySelectorAll('input').forEach((inp) => inp.addEventListener('input', () => {
+        const id = inp.closest('tr').dataset.id;
+        if (inp.dataset.kind === 'actual') state.actuals[id] = inp.value === '' ? '' : parseFloat(inp.value);
+        else state.evidence[id] = inp.value.trim();
+        recomputeBsc();
+      }));
+    }
+    function recomputeBsc() {
+      const strict = $('bsc-gate').value === 'strict';
+      const dimTotals = {}; let scored = 0, withEv = 0, entered = 0, totalW = 0, sum = 0;
+      Object.keys(dimensions).forEach((d) => dimTotals[d] = { w: 0, s: 0 });
+      kpis.forEach((k) => {
+        const row = $('bsc-table').querySelector('tr[data-id="' + k.id + '"]');
+        const a = state.actuals[k.id]; const ev = state.evidence[k.id] || '';
+        const sc = kpiScore(k, a === undefined ? '' : a);
+        const has = sc !== null;
+        if (has) { entered++; if (ev) withEv++; }
+        const counted = has && (!strict || ev);
+        let status = '<span class="x-status x-info">no data</span>';
+        if (has && !ev) status = strict ? '<span class="x-status x-bad">incomplete</span>' : '<span class="x-status x-warn">no evidence</span>';
+        if (has && ev) status = sc >= 95 ? '<span class="x-status x-ok">on target</span>' : sc >= 80 ? '<span class="x-status x-warn">watch</span>' : '<span class="x-status x-bad">off target</span>';
+        row.querySelector('.c-score').textContent = has ? sc.toFixed(0) : '–';
+        row.querySelector('.c-status').innerHTML = status;
+        if (counted) {
+          const contrib = sc * k.weight; sum += contrib; totalW += k.weight; scored++;
+          dimTotals[k.dim].w += k.weight; dimTotals[k.dim].s += contrib;
+          row.querySelector('.c-contrib').textContent = (contrib / 100).toFixed(2);
+        } else row.querySelector('.c-contrib').textContent = '–';
+      });
+      const overall = totalW ? sum / totalW : 0;
+      $('bsc-overall').textContent = totalW ? overall.toFixed(0) : '0';
+      const ring = $('bsc-ring');
+      ring.style.setProperty('--p', overall.toFixed(0));
+      ring.style.setProperty('--ring', overall >= 90 ? 'var(--fin)' : overall >= 75 ? 'var(--board)' : 'var(--cut)');
+      const comp = entered ? Math.round((withEv / entered) * 100) : null;
+      $('bsc-verdict').textContent = !entered ? 'Enter actuals to score.'
+        : scored + ' of ' + kpis.length + ' KPIs scored \u00b7 evidence complete on ' + comp + '% of entered KPIs.';
+      $('bsc-dims').innerHTML = Object.entries(dimensions).map(([d, meta]) => {
+        const t = dimTotals[d]; const v = t.w ? t.s / t.w : 0;
+        return '<div class="x-dim"><span>' + esc(meta.label) + '</span><div class="x-bar ' + (v < 75 ? 'bad' : v < 90 ? 'warn' : '') + '"><span style="width:' + v.toFixed(0) + '%"></span></div><span>' + (t.w ? v.toFixed(0) : '–') + '</span></div>';
+      }).join('');
+      $('ev-complete').textContent = comp === null ? '–' : comp + '%';
+    }
+    function bscResetDemo() {
+      kpis.forEach((k) => { state.actuals[k.id] = k.demo; state.evidence[k.id] = k.ev; });
+      $('bsc-table').querySelectorAll('tr[data-id]').forEach((row) => {
+        const id = row.dataset.id;
+        row.querySelector('[data-kind="actual"]').value = state.actuals[id];
+        row.querySelector('[data-kind="ev"]').value = state.evidence[id];
+      });
+      recomputeBsc(); toast('Demo data loaded. Two KPIs are deliberately missing evidence.');
+    }
+    function bscClear() {
+      state.actuals = {}; state.evidence = {};
+      $('bsc-table').querySelectorAll('input').forEach((i) => i.value = '');
+      recomputeBsc(); toast('Actuals cleared.');
+    }
+    function exportBscCsv() {
+      const rows = [['Position', 'Period', 'Dimension', 'KPI', 'Direction', 'Target', 'Actual', 'Evidence', 'Weight', 'Score']];
+      kpis.forEach((k) => {
+        const a = state.actuals[k.id]; const sc = kpiScore(k, a === undefined ? '' : a);
+        rows.push([teamData[$('bsc-position').value].role, $('bsc-period').value, dimensions[k.dim].label, k.name, k.dir, k.target, a === undefined ? '' : a, state.evidence[k.id] || '', k.weight, sc === null ? '' : sc.toFixed(1)]);
+      });
+      download('frr-bsc-' + $('bsc-period').value.replace(' ', '-') + '.csv', rows.map((r) => r.map((c) => '"' + String(c).replace(/"/g, '""') + '"').join(',')).join('\n'), 'text/csv');
+    }
+    $('bsc-gate').addEventListener('change', recomputeBsc);
+
+    function buildControlTest() {
+      $('control-test').innerHTML = controlItems.map((c, i) => (
+        '<div class="card" style="margin:0;padding:12px;">' +
+        '<label style="display:flex;gap:8px;align-items:center;font-weight:700;cursor:pointer;">' +
+        '<input type="checkbox" data-ct="' + i + '" style="accent-color:var(--new);"> ' + c[0] + '</label>' +
+        '<p class="subtle" style="margin:4px 0 8px;">' + c[1] + '</p>' +
+        '<input type="text" data-ctref="' + i + '" placeholder="Evidence reference" class="form-control" style="width:100%;"></div>'
+      )).join('');
+      const refresh = () => {
+        // A control counts as verified only with a ticked box AND a reference (evidence gate).
+        const n = ctState.filter((s) => s.on && s.ref).length;
+        $('ct-bar').style.width = (n / 6 * 100) + '%';
+        $('ct-score').textContent = n + ' / 6 verified';
+      };
+      $('control-test').querySelectorAll('[data-ct]').forEach((el) => el.addEventListener('change', () => { ctState[el.dataset.ct].on = el.checked; refresh(); }));
+      $('control-test').querySelectorAll('[data-ctref]').forEach((el) => el.addEventListener('input', () => { ctState[el.dataset.ctref].ref = el.value.trim(); refresh(); }));
+    }
+
+    /* ---------- CAPA register ---------- */
+    const capaStages = ['open', 'verified', 'closed'];
+    const capaLabel = { open: 'Open', verified: 'Verified', closed: 'Institutionalized' };
+    const capas = [
+      { id: 'CAPA-001', issue: 'Beer reconciliation gap on Shift 2', owner: 'reagan_ogol', due: '2026-09-15', inst: 'Audit / check', stage: 'open' },
+      { id: 'CAPA-002', issue: 'FO-001 not countersigned at T-15', owner: 'reagan_ogol', due: '2026-10-10', inst: 'SOP update', stage: 'verified' },
+      { id: 'CAPA-003', issue: 'Training records incomplete for new hires', owner: 'albert_maroa', due: '2026-09-01', inst: 'Training', stage: 'closed' }
+    ];
+    let capaFilter = 'all';
+    const today = () => new Date().toISOString().slice(0, 10);
+    const isOverdue = (c) => c.stage !== 'closed' && c.due && c.due < today();
+    function renderCapa() {
+      const list = capas.filter((c) => capaFilter === 'all' || (capaFilter === 'overdue' ? isOverdue(c) : c.stage === capaFilter));
+      $('capa-table').querySelector('tbody').innerHTML = list.length ? list.map((c) => (
+        '<tr><td><strong>' + c.id + '</strong></td><td>' + esc(c.issue) + '</td><td>' + esc(teamData[c.owner].role) + '</td>' +
+        '<td>' + esc(c.due || '\u2013') + (isOverdue(c) ? ' <span class="x-status x-bad">overdue</span>' : '') + '</td>' +
+        '<td>' + esc(c.inst) + '</td>' +
+        '<td><span class="x-status ' + (c.stage === 'closed' ? 'x-new' : c.stage === 'verified' ? 'x-ok' : 'x-warn') + '">' + capaLabel[c.stage] + '</span></td>' +
+        '<td>' + (c.stage === 'closed' ? '\u2713' : '<button class="btn" onclick="advanceCapa(\'' + c.id + '\')">' + (c.stage === 'open' ? 'Verify' : 'Institutionalize') + '</button>') + '</td></tr>'
+      )).join('') : '<tr><td colspan="7" style="text-align:center;color:var(--text-3);">No records in this view.</td></tr>';
+      $('ev-open').textContent = capas.filter((c) => c.stage !== 'closed').length;
+      $('ev-overdue').textContent = capas.filter(isOverdue).length;
+      $('ev-inst').textContent = capas.filter((c) => c.stage === 'closed').length;
+    }
+    function addCapa() {
+      const issue = $('capa-issue').value.trim();
+      if (!issue) { toast('Describe the variance first.'); $('capa-issue').focus(); return; }
+      const id = 'CAPA-' + String(capas.length + 1).padStart(3, '0');
+      capas.push({ id, issue, owner: $('capa-owner').value, due: $('capa-due').value, inst: $('capa-inst').value, stage: 'open' });
+      $('capa-issue').value = ''; renderCapa(); toast(id + ' added to the register.');
+    }
+    function advanceCapa(id) {
+      const c = capas.find((x) => x.id === id);
+      if (!c) return;
+      c.stage = capaStages[Math.min(capaStages.indexOf(c.stage) + 1, 2)];
+      renderCapa();
+    }
+    function exportCapaJson() { download('frr-capa-register.json', JSON.stringify(capas, null, 2), 'application/json'); }
+    $('capa-filters').addEventListener('click', (e) => {
+      const b = e.target.closest('.x-chip'); if (!b) return;
+      capaFilter = b.dataset.f;
+      $('capa-filters').querySelectorAll('.x-chip').forEach((c) => c.classList.toggle('on', c === b));
+      renderCapa();
+    });
+
+    /* ---------- Control loop, chain, rhythm ---------- */
+    const loopSteps = [
+      ['Expected condition', 'What must be true for the KPI to be met?', 'Defined in the KPI dictionary with target, direction and owner. Proof: approved dictionary entry.'],
+      ['Actual evidence', 'What proves what happened?', 'Register, checklist, audit, POS export or incident record with date and custodian.'],
+      ['Managerial control', 'What did the position do?', 'Caused, coordinated, controlled, escalated, followed up. Recorded with references.'],
+      ['Result', 'What number came out?', 'Formula-driven KPI score and weighted contribution. Missing evidence stays incomplete.'],
+      ['Evaluation', 'Outcome vs contribution', 'Quarterly review separates the departmental result from managerial contribution.'],
+      ['Action', 'What must change?', 'CAPA with owner, due date and verification step.'],
+      ['Institutionalization', 'How does it survive the person?', 'SOP update, training, audit, control or escalation rule that stays after staff turnover.']
+    ];
+    function buildLoop() {
+      $('loop-steps').innerHTML = loopSteps.map((s, i) => '<div class="step" tabindex="0" role="button" data-i="' + i + '"><div class="n">0' + (i + 1) + '</div><h4>' + s[0] + '</h4><p>' + s[1] + '</p></div>').join('');
+      const show = (i) => {
+        $('loop-steps').querySelectorAll('.step').forEach((el) => el.classList.toggle('on', +el.dataset.i === i));
+        $('loop-detail').innerHTML = '<strong>' + loopSteps[i][0] + '.</strong> ' + loopSteps[i][2];
+      };
+      $('loop-steps').querySelectorAll('.step').forEach((el) => {
+        el.addEventListener('click', () => show(+el.dataset.i));
+        el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(+el.dataset.i); } });
+      });
+      show(0);
+    }
+    const chain = [
+      ['fa-building', 'Enterprise standard', 'Brand, strategy, financial and governance expectations.', 'var(--board)'],
+      ['fa-scale-balanced', 'Management system', 'BSC, control system and management rhythm.', 'var(--exec)'],
+      ['fa-user-tie', 'Position / role', 'Authority, accountability, KRA and KPI.', 'var(--fin)'],
+      ['fa-list-check', 'Department / process', 'SOP, workflow, handover and service flow.', 'var(--ops)'],
+      ['fa-utensils', 'Frontline execution', 'Shift, duty, transaction and service interaction.', 'var(--hr)'],
+      ['fa-folder-open', 'Evidence', 'Register, checklist, audit, report, incident, system record.', 'var(--new)'],
+      ['fa-wrench', 'Corrective action', 'Action, owner, due date, verification.', 'var(--board)'],
+      ['fa-brain', 'Institutional memory', 'SOP update, training, control, escalation, knowledge record.', 'var(--fin)']
+    ];
+    function buildChain() {
+      $('op-chain').innerHTML = chain.map((c) => '<div class="lvl" style="--c:' + c[3] + '"><i class="fa-solid ' + c[0] + '"></i><b>' + c[1] + '</b><span>' + c[2] + '</span></div>').join('');
+    }
+    const rhythm = [
+      ['Daily', 'fa-sun', ['Pre-shift checklist (T-45)', 'FO-001 countersigned', 'Shift close forms', 'POS summary filed']],
+      ['Weekly', 'fa-calendar-week', ['Exception review', 'Open handover failures', 'CAPA due-date check']],
+      ['Monthly', 'fa-calendar-days', ['Evidence register closed', 'KPI actuals entered', 'Variance explanations written']],
+      ['Quarterly', 'fa-chart-line', ['Formal BSC evaluation', 'Managerial control test', 'Re-audit of closed CAPA']],
+      ['Annual', 'fa-award', ['Position appraisal', 'KPI dictionary review', 'Strategy map update']]
+    ];
+    function buildRhythm() {
+      $('rhythm-cal').innerHTML = rhythm.map((r, ri) => (
+        '<div class="cell" data-r="' + ri + '"><h4><span><i class="fa-solid ' + r[1] + '" style="color:var(--board);"></i> ' + r[0] + '</span><span class="x-status x-info" data-p>0%</span></h4><ul>' +
+        r[2].map((t, ti) => '<li><input type="checkbox" data-r="' + ri + '" aria-label="' + esc(t) + '"> <span>' + t + '</span></li>').join('') + '</ul></div>'
+      )).join('');
+      $('rhythm-cal').addEventListener('change', (e) => {
+        const cb = e.target; if (cb.type !== 'checkbox') return;
+        cb.closest('li').classList.toggle('done', cb.checked);
+        const cell = cb.closest('.cell'); const all = cell.querySelectorAll('input'); const on = cell.querySelectorAll('input:checked').length;
+        cell.querySelector('[data-p]').textContent = Math.round(on / all.length * 100) + '%';
+      });
+    }
+
+    /* ---------- Backward plan ---------- */
+    const shareRows = [
+      ['General Manager', 'hiram_nyingi', 40, 'Revenue, EBITDA, daily BSC execution'],
+      ['Chief Accountant', 'chris_mutinda', 10, 'GP target, cash controls, payroll accuracy'],
+      ['Operations Manager', 'reagan_ogol', 35, 'Shift command, SOP adherence, speed'],
+      ['People & Culture Manager', 'albert_maroa', 10, 'Retention, training, labour compliance'],
+      ['Managing Director (CapEx)', 'victor_machoka', 5, 'Investment approvals, growth review']
+    ];
+    const stageRows = [['Kitchen', 60], ['Service / floor', 75], ['Bar', 90], ['Cashiering / POS', 110]];
+    function buildBackward() {
+      $('bp-roles').querySelector('tbody').innerHTML = shareRows.map((r, i) => '<tr><td>' + r[0] + '</td><td><input type="number" data-share="' + i + '" value="' + r[2] + '"></td><td class="bp-money">–</td><td>' + r[3] + '</td></tr>').join('');
+      $('bp-stages').querySelector('tbody').innerHTML = stageRows.map((r, i) => '<tr><td>' + r[0] + '</td><td><input type="number" data-stage="' + i + '" value="' + r[1] + '"></td></tr>').join('');
+      document.querySelectorAll('#backward input').forEach((el) => el.addEventListener('input', recomputeBackward));
+      recomputeBackward();
+    }
+    function recomputeBackward() {
+      const v = (id) => parseFloat($(id).value) || 0;
+      const rev = v('bp-rev'), gp = v('bp-gp'), days = Math.max(1, v('bp-days')), check = Math.max(1, v('bp-check')), pay = v('bp-pay'), hrs = Math.max(1, v('bp-hours'));
+      const perDay = rev / days, covers = perDay / check;
+      $('bp-o-day').textContent = fmt(perDay); $('bp-o-cov').textContent = fmt(covers);
+      $('bp-o-gp').textContent = fmt(rev * gp / 100); $('bp-o-pay').textContent = fmt(rev * pay / 100);
+      let total = 0;
+      $('bp-roles').querySelectorAll('tbody tr').forEach((tr) => {
+        const s = parseFloat(tr.querySelector('input').value) || 0; total += s;
+        tr.querySelector('.bp-money').textContent = fmt(rev * s / 100);
+      });
+      const chk = $('bp-share-check');
+      chk.className = 'x-status ' + (Math.abs(total - 100) < 0.01 ? 'x-ok' : 'x-warn');
+      chk.textContent = 'Total ' + total.toFixed(1) + '%' + (Math.abs(total - 100) < 0.01 ? ' \u2713' : ' (should be 100%)');
+      // Bottleneck: demand is spread evenly over trading hours; peak factor 1.6 is an assumption.
+      const peak = 1.6, demand = covers / hrs * peak;
+      const caps = [...$('bp-stages').querySelectorAll('input')].map((i, n) => ({ name: stageRows[n][0], cap: parseFloat(i.value) || 0 }));
+      const max = Math.max(demand, ...caps.map((c) => c.cap), 1);
+      const min = caps.reduce((a, b) => (b.cap < a.cap ? b : a), caps[0]);
+      $('bp-flow').innerHTML = [{ name: 'Peak demand', cap: demand, demand: true }, ...caps].map((c) => (
+        '<div class="col' + (c === min ? ' bn' : '') + '"><b class="v">' + c.cap.toFixed(0) + '</b><div class="b" style="height:' + (c.cap / max * 100) + '%' + (c.demand ? ';background:var(--board)' : '') + '"></div><small>' + c.name + '</small></div>'
+      )).join('');
+      const gap = demand - min.cap;
+      $('bp-verdict').innerHTML = gap > 0
+        ? '<span class="x-status x-bad">Constraint</span> <strong>' + min.name + '</strong> caps throughput at ' + min.cap.toFixed(0) + ' covers/hr against peak demand of ' + demand.toFixed(0) + '. Shortfall: ' + gap.toFixed(0) + ' covers/hr.'
+        : '<span class="x-status x-ok">Feasible</span> All stages cover peak demand (' + demand.toFixed(0) + ' covers/hr). Tightest stage: <strong>' + min.name + '</strong> with ' + (min.cap - demand).toFixed(0) + ' covers/hr headroom. Peak factor 1.6 is an assumption.';
+    }
+
+    /* ---------- Theory ---------- */
+    const props = [
+      ['P1', 'Alignment', 'When strategic objectives are translated into role-specific control conditions, frontline activity becomes more visibly connected to strategy.', 'Trace enterprise objective \u2192 role \u2192 process/shift \u2192 evidence.'],
+      ['P2', 'Evidence', 'When performance claims require identifiable evidence, unsupported or ambiguous scores decline.', 'Percentage of KPI records with complete evidence.'],
+      ['P3', 'Control', 'When evaluation separates result from managerial control, accountability becomes more precise.', 'Compare outcome-only appraisal with control-and-evidence appraisal.'],
+      ['P4', 'Coordination', 'When cross-department dependencies are explicit KPIs, unresolved bottlenecks become more visible.', 'Dependency closure time, repeat failures, escalations.'],
+      ['P5', 'Institutionalization', 'When corrective action must become a documented control, repeat failures decline.', 'Recurrence after CAPA closure and re-audit.'],
+      ['P6', 'Learning', 'When evidence flows through a recurring rhythm, reusable management knowledge accumulates.', 'Reuse of SOPs, audit findings, training and improvement records.']
+    ];
+    const risks = [
+      ['Metric overload', 'Measure what management can act on; remove redundant KPIs.', 'warn'],
+      ['Gaming', 'Audit evidence and examine recurrence, not only scores.', 'bad'],
+      ['False precision', 'Evidence gate plus a qualitative control record.', 'warn'],
+      ['Attribution error', 'Separate result from contribution; document dependencies.', 'warn'],
+      ['Technology before governance', 'Define authority, evidence and workflow before automation.', 'bad'],
+      ['AI overreach', 'Human authorization and traceable evidence stay mandatory.', 'bad'],
+      ['Theory\u2013practice gap', 'Use longitudinal data and comparative evaluation.', 'warn']
+    ];
+    const roadmap = [
+      ['Define the enterprise standard', 'Brand promise, objectives, financial boundaries, compliance and service standards.'],
+      ['Define positions', 'Use positions, not individuals, as the durable units of accountability.'],
+      ['Build the KPI dictionary', 'Target, direction, method, evidence, frequency, owner and control test.'],
+      ['Connect daily work', 'Map SOPs, shifts, checklists, handovers and system transactions to KPIs.'],
+      ['Establish the evidence gate', 'No identifiable evidence means an incomplete record.'],
+      ['Run the management rhythm', 'Daily, weekly, monthly, quarterly, annual.'],
+      ['Close the loop', 'Variance, corrective action, verification, institutionalization.'],
+      ['Build the data layer', 'Integrate systems only after management definitions are stable.'],
+      ['Add analytics and AI', 'After evidence quality and governance are reliable.']
+    ];
+    function buildTheory() {
+      $('prop-list').innerHTML = props.map((p) => (
+        '<details class="x-prop"><summary><span class="x-status x-info">' + p[0] + '</span> ' + p[1] + '</summary><div class="body"><p>' + p[2] + '</p><p><strong>Observable test:</strong> ' + p[3] + '</p></div></details>'
+      )).join('');
+      $('risk-table').querySelector('tbody').innerHTML = risks.map((r) => '<tr><td><strong>' + r[0] + '</strong></td><td>' + r[1] + '</td><td><span class="x-status x-' + r[2] + '">' + (r[2] === 'bad' ? 'high' : 'medium') + '</span></td></tr>').join('');
+      $('roadmap').innerHTML = roadmap.map((s, i) => '<div class="t" data-i="' + i + '" tabindex="0" role="button" style="cursor:pointer;"><b>' + String(i + 1).padStart(2, '0') + ' \u2014 ' + s[0] + '</b><p>' + s[1] + '</p></div>').join('');
+      $('roadmap').addEventListener('click', (e) => {
+        const t = e.target.closest('.t'); if (!t) return;
+        t.classList.toggle('done');
+        const n = $('roadmap').querySelectorAll('.t.done').length, pct = Math.round(n / roadmap.length * 100);
+        $('road-bar').style.width = pct + '%'; $('road-pct').textContent = pct + '%';
+      });
+    }
+
+    /* ---------- Init ---------- */
+    buildBscTable(); buildControlTest(); recomputeBsc();
+    renderCapa(); buildLoop(); buildChain(); buildRhythm(); buildBackward(); buildTheory();
+
+    /* ---------- Compare & Future ---------- */
+    const cmpRows = [
+      ['control', 'Primary unit', 'Department, shift, transaction or individual employee.', 'Position + KRA + KPI + cross-department responsibility.'],
+      ['control', 'Performance question', 'Did the target get achieved?', 'What condition was expected, what evidence exists, what did management control, what changed?'],
+      ['data', 'Data', 'POS, PMS, accounting, HR and audit records sit in separate workflows.', 'Evidence is deliberately connected to the KPI and the control test.'],
+      ['control', 'Accountability', 'Results are attributed to the department producing them.', 'Departmental output is separated from managerial contribution.'],
+      ['data', 'Review', 'Daily operations and periodic management reporting.', 'Daily evidence feeds weekly and monthly review, quarterly evaluation and annual appraisal.'],
+      ['learning', 'Exception handling', 'Issue and action may be recorded separately.', 'Variance, action, verification and institutionalization form one chain.'],
+      ['learning', 'Organizational learning', 'Depends on managers remembering and communicating what worked.', 'Learning becomes part of SOPs, audits, training and controls.'],
+      ['control', 'Governance', 'Authority stays implicit in the organogram.', 'Owner, reviewer, authorizer, evidence custodian and escalation are explicit.']
+    ];
+    let cmpFilter = 'all';
+    function renderCmp() {
+      $('cmp-table').querySelector('tbody').innerHTML = cmpRows.filter((r) => cmpFilter === 'all' || r[0] === cmpFilter)
+        .map((r) => '<tr><td><strong>' + r[1] + '</strong></td><td style="color:var(--text-2);">' + r[2] + '</td><td>' + r[3] + '</td></tr>').join('');
+    }
+    $('cmp-filters').addEventListener('click', (e) => {
+      const b = e.target.closest('.x-chip'); if (!b) return;
+      cmpFilter = b.dataset.f;
+      $('cmp-filters').querySelectorAll('.x-chip').forEach((c) => c.classList.toggle('on', c === b));
+      renderCmp();
+    });
+
+    const systems = [
+      { n: 'POS', v: 'Sales, transactions, item mix.', g: 'Connect transaction evidence to role-level control and strategic KPIs.', on: true },
+      { n: 'PMS / reservations', v: 'Occupancy, booking and guest-flow information.', g: 'Connect service flow and cross-department dependencies.', on: false },
+      { n: 'Accounting', v: 'Revenue, cost, margin and budget variance.', g: 'Connect financial results to operational causes and management action.', on: true },
+      { n: 'SOPs / checklists', v: 'Standardized work and verification.', g: 'Connect standards to evidence, audits and corrective action.', on: true },
+      { n: 'Guest feedback', v: 'Voice of customer and complaint data.', g: 'Connect complaint and recovery patterns to operational controls.', on: false },
+      { n: 'HR / scheduling', v: 'Attendance, staffing and workforce information.', g: 'Connect people indicators to operational reliability and manager action.', on: false },
+      { n: 'Dashboards', v: 'Visibility and reporting.', g: 'Add evidence gates, authority, workflow and institutionalization.', on: false }
+    ];
+    let intQuery = '';
+    function renderInt() {
+      const q = intQuery.toLowerCase();
+      $('int-table').querySelector('tbody').innerHTML = systems.map((s, i) => ({ s, i }))
+        .filter(({ s }) => !q || (s.n + ' ' + s.v + ' ' + s.g).toLowerCase().includes(q))
+        .map(({ s, i }) => '<tr><td><strong>' + s.n + '</strong></td><td>' + s.v + '</td><td>' + s.g + '</td>' +
+          '<td><label style="cursor:pointer;display:flex;gap:6px;align-items:center;"><input type="checkbox" data-sys="' + i + '"' + (s.on ? ' checked' : '') + ' style="accent-color:var(--fin);width:auto;min-width:0;"> ' + (s.on ? 'yes' : 'no') + '</label></td></tr>').join('')
+        || '<tr><td colspan="4" style="text-align:center;color:var(--text-3);">No matching systems.</td></tr>';
+      const n = systems.filter((s) => s.on).length;
+      $('int-bar').style.width = (n / systems.length * 100) + '%';
+      $('int-pct').textContent = n + ' / ' + systems.length + ' connected';
+    }
+    $('int-search').addEventListener('input', (e) => { intQuery = e.target.value; renderInt(); });
+    $('int-table').addEventListener('change', (e) => {
+      if (e.target.dataset.sys === undefined) return;
+      systems[+e.target.dataset.sys].on = e.target.checked; renderInt();
+    });
+
+    const stages = [
+      ['Digitize', 'Every KPI has a digital record, evidence reference and workflow status.', 'Less manual reconciliation.'],
+      ['Integrate', 'POS, PMS, accounting, HR, audit, maintenance and guest systems feed a common evidence layer.', 'One operating picture.'],
+      ['Predict', 'Analytics detect leading indicators and recurring failure patterns.', 'Management acts before failure becomes guest-facing.'],
+      ['Assist', 'AI summarizes evidence, flags anomalies and drafts action plans, always subject to human verification.', 'Faster review without surrendering authority.'],
+      ['Learn', 'Verified outcomes update SOPs, training, thresholds, controls and strategy maps.', 'The organization becomes a learning system.']
+    ];
+    function buildStages() {
+      $('stage-steps').innerHTML = stages.map((s, i) => '<div class="step" tabindex="0" role="button" data-i="' + i + '"><div class="n">STAGE ' + (i + 1) + '</div><h4>' + s[0] + '</h4><p>' + s[2] + '</p></div>').join('');
+      const show = (i) => {
+        $('stage-steps').querySelectorAll('.step').forEach((el) => el.classList.toggle('on', +el.dataset.i === i));
+        $('stage-detail').innerHTML = '<strong>' + stages[i][0] + '.</strong> ' + stages[i][1] + (i === 3 ? ' <span class="x-status x-warn">human authorizes</span>' : '');
+      };
+      $('stage-steps').querySelectorAll('.step').forEach((el) => {
+        el.addEventListener('click', () => show(+el.dataset.i));
+        el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(+el.dataset.i); } });
+      });
+      show(0);
+    }
+    const rqs = [
+      ['Does evidence-gated appraisal improve data quality?', '% KPI records complete and retrievable', 'BSC register / audit'],
+      ['Does explicit control evidence improve accountability?', 'Outcome attribution vs verified control actions', 'Quarterly evaluations'],
+      ['Does institutionalization reduce recurrence?', 'Repeat failure rate after CAPA closure', 'Incident and CAPA register'],
+      ['Does cross-department control improve reliability?', 'Handover failures, dependency closure time, recovery SLA', 'Operational workflow records'],
+      ['Does the system improve financial performance?', 'Revenue, cost, margin, labour productivity, controlling for demand', 'POS / accounting / operations'],
+      ['Does the system improve guest experience?', 'Satisfaction, complaint closure, recovery effectiveness', 'Guest feedback records'],
+      ['Does it improve resilience?', 'Time-to-detect, time-to-recover, recurrence in disruptions', 'Incident and continuity records']
+    ];
+    function buildRq() {
+      $('rq-table').querySelector('tbody').innerHTML = rqs.map((r) => '<tr><td><strong>' + r[0] + '</strong></td><td>' + r[1] + '</td><td>' + r[2] + '</td></tr>').join('');
+    }
+    renderCmp(); renderInt(); buildStages(); buildRq();
+
+    /* ---------- Overview live status ---------- */
+    function refreshOverview() {
+      const o = $('bsc-overall').textContent;
+      $('ov-bsc').textContent = o === '0' && !Object.keys(state.actuals).length ? '\u2013' : o + ' / 100';
+      $('ov-ev').textContent = $('ev-complete').textContent;
+      $('ov-capa').textContent = $('ev-open').textContent + ' / ' + $('ev-overdue').textContent;
+      $('ov-int').textContent = systems.filter((x) => x.on).length + ' / ' + systems.length;
+    }
+    document.querySelectorAll('.tab-btn').forEach((b) => b.addEventListener('click', refreshOverview));
+    ['input', 'change', 'click'].forEach((ev) => document.addEventListener(ev, () => setTimeout(refreshOverview, 0)));
+    refreshOverview();
+
+    /* ---------- Guard: warn about unsaved edits before leaving ---------- */
+    window.addEventListener('beforeunload', (e) => {
+      const dirty = Object.keys(state.actuals).length || capas.length > 3;
+      if (dirty) { e.preventDefault(); e.returnValue = ''; }
+    });
   </script>
 </body>
 </html>
