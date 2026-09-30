@@ -1,0 +1,13 @@
+services:
+  db:
+    image: postgres:16
+    environment: {POSTGRES_USER: hmos, POSTGRES_PASSWORD: ${DB_PASSWORD:-change_me}, POSTGRES_DB: hmos}
+    volumes: [pgdata:/var/lib/postgresql/data]
+  api:
+    build: {context: ., dockerfile: backend/Dockerfile}
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://hmos:${DB_PASSWORD:-change_me}@db:5432/hmos
+    depends_on: [db]
+    ports: ["8000:8000"]
+volumes: {pgdata: {}}

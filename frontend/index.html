@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HMOS Portal</title>
+<script src="https://cdn.tailwindcss.com"></script></head>
+<body class="bg-slate-900 text-slate-200 min-h-screen p-6">
+<div class="max-w-4xl mx-auto space-y-6">
+  <h1 class="text-2xl font-bold text-amber-400">HMOS Portal</h1>
+  <section id="login" class="space-y-2">
+    <input id="email" placeholder="email" class="bg-slate-800 p-2 rounded w-64">
+    <input id="pw" type="password" placeholder="password" class="bg-slate-800 p-2 rounded w-64">
+    <button onclick="login()" class="bg-amber-500 text-slate-900 px-4 py-2 rounded font-semibold">Sign in</button>
+    <p id="err" class="text-rose-400 text-sm"></p>
+  </section>
+  <section id="app" class="hidden space-y-6">
+    <div class="flex gap-2 items-center">
+      <input id="period" value="2026-Q3" class="bg-slate-800 p-2 rounded w-32">
+      <button onclick="load()" class="bg-slate-700 px-3 py-2 rounded">Load scorecard</button>
+    </div>
+    <div id="overall" class="text-lg"></div>
+    <div id="dims" class="space-y-4"></div>
+    <div id="admin" class="hidden border border-slate-700 rounded p-4 space-y-2">
+      <h2 class="font-semibold text-amber-400">Admin: upload Excel workbook</h2>
+      <input type="file" id="file" accept=".xlsx">
+      <label class="text-sm"><input type="checkbox" id="dry" checked> Dry run (validate only)</label>
+      <button onclick="upload()" class="bg-amber-500 text-slate-900 px-3 py-1 rounded font-semibold">Upload</button>
+      <pre id="upres" class="text-xs whitespace-pre-wrap"></pre>
+    </div>
+  </section>
+</div>
+<script>
+let T = "", ROLE = "";
+const H = () => ({Authorization: "Bearer " + T});
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const col = {green:"text-emerald-400", amber:"text-amber-400", red:"text-rose-400"};
+async function login(){
+  const r = await fetch("/api/auth/login",{method:"POST",headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({email:email.value,password:pw.value})});
+  if(!r.ok){err.textContent="Login failed";return;}
+  const j = await r.json(); T=j.token; ROLE=j.role;
+  document.getElementById("login").classList.add("hidden"); document.getElementById("app").classList.remove("hidden");
+  if(ROLE==="admin") document.getElementById("admin").classList.remove("hidden");
+  load();
+}
+async function load(){
+  const r = await fetch("/api/scorecard?period="+encodeURIComponent(period.value),{headers:H()}); const j = await r.json();
+  overall.innerHTML = `Overall BSC: <b class="${col[j.overall_rag]||""}">${j.overall ?? "n/a"}</b> &middot; Evidence completeness: <b>${j.evidence_completeness_pct}%</b>`;
+  dims.innerHTML = j.dimensions.map(d => `<div class="bg-slate-800 rounded p-4">
+    <div class="flex justify-between"><b>${esc(d.dimension)}</b><span class="${col[d.rag]||""}">${d.score ?? "no complete evidence"} (w${d.weight})</span></div>
+    <table class="w-full text-sm mt-2">${d.items.map(i => `<tr class="border-t border-slate-700">
+      <td class="py-1">${esc(i.name)}</td><td>${esc(i.actual)} / ${esc(i.target)}</td>
+      <td>${i.status==="COMPLETE" ? esc(i.score) : `<span class="text-amber-400">${esc(i.status)}</span>`}</td></tr>`).join("")}</table></div>`).join("");
+}
+async function upload(){
+  const f = document.getElementById("file").files[0]; if(!f) return;
+  const fd = new FormData(); fd.append("file", f);
+  const r = await fetch("/api/admin/import?dry_run="+document.getElementById("dry").checked,{method:"POST",headers:H(),body:fd});
+  upres.textContent = JSON.stringify(await r.json(),null,2); if(r.ok && !dry.checked) load();
+}
+</script></body></html>

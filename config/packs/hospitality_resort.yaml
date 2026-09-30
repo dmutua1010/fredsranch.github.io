@@ -1,0 +1,15 @@
+# STANDARD PACK - the replicable "product". A new client = a new pack + their Excel data.
+pack: hospitality_resort
+version: 1.0
+scoring:
+  cap_percent: 120          # max KPI score (over-achievement cap)
+  rag: {green: 90, amber: 75}
+dimensions:                 # KRA -> weight in overall scorecard (should sum to 100)
+  "Financial Stewardship": 30
+  "Systems & Structures": 25
+  "Guest Experience & Brand Reputation": 25
+  "SHIELD Culture Adoption": 20     # rename per client culture programme
+evidence_gate:
+  required: true            # no evidence reference -> record INCOMPLETE, excluded from score
+  require_closure_for_variance: true
+rhythm: [daily_evidence, weekly_exception, monthly_register, quarterly_evaluation, annual_appraisal]
