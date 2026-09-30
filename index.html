@@ -56,7 +56,7 @@
     }
 
     a { color: inherit; text-decoration: none; }
-    button, input, select { font: inherit; }
+    button, input, select, textarea { font: inherit; }
 
     .container {
       max-width: 1300px;
@@ -687,6 +687,7 @@
       font-size: 11px;
       line-height: 1.7;
       color: var(--text);
+      white-space: pre-wrap;
     }
 
     table {
@@ -908,8 +909,8 @@
               The result is a more resilient structure built for quicker decisions, stronger oversight, and cleaner operational accountability.
             </p>
             <div class="hero-actions">
-              <button class="btn primary" onclick="document.querySelector('[data-tab=\"integrated\"]').click()"><i class="fa-solid fa-arrow-right"></i> View Organogram</button>
-              <button class="btn" onclick="document.querySelector('[data-tab=\"legal\"]').click()"><i class="fa-solid fa-file-signature"></i> Review Legal Form</button>
+              <button class="btn primary" onclick="document.querySelector('[data-tab=\'integrated\']').click()"><i class="fa-solid fa-arrow-right"></i> View Organogram</button>
+              <button class="btn" onclick="document.querySelector('[data-tab=\'legal\']').click()"><i class="fa-solid fa-file-signature"></i> Review Legal Form</button>
             </div>
           </div>
 
@@ -1128,126 +1129,126 @@
           <div class="node-kpi">
             <div class="kpi-title">Operational efficiency</div>
             <div class="kpi-val">Efficiency index: <span class="kpi-target">≥90–95%</span></div>
-            <div class="kpi-val">F&amp;B cost: <span class="kpi-target">≤28–32%</span></div>
+            <div class="kpi-val">F&amp;B cost: <span class="kpi-target">≤28.5%</span></div>
           </div>
           <div class="node-footer"><span>Operations</span><span class="sb sb-core">Core</span></div>
         </div>
 
-        <div class="node node-hr" onclick="openModal('albert_maroa')">
+        <div class="node node-hr" onclick="openModal('hr_head')">
           <div>
-            <div class="node-role">People & Culture Mgr</div>
-            <div class="node-name">Albert Maroa</div>
-            <div class="node-sub">Human capital & culture</div>
+            <div class="node-role">Head of HR & Culture</div>
+            <div class="node-name">Talent & Operations Lead</div>
+            <div class="node-sub">People & compliance</div>
           </div>
           <div class="node-kpi">
-            <div class="kpi-title">Talent & culture</div>
-            <div class="kpi-val">Turnover: <span class="kpi-target">≤10–12%</span></div>
-            <div class="kpi-val">Culture index: <span class="kpi-target">≥90%</span></div>
+            <div class="kpi-title">People Metrics</div>
+            <div class="kpi-val">Retention: <span class="kpi-target">≥85%</span></div>
+            <div class="kpi-val">SOP Compliance: <span class="kpi-target">100%</span></div>
           </div>
-          <div class="node-footer"><span>People & Talent</span><span class="sb sb-core">Core</span></div>
+          <div class="node-footer"><span>HR & Legal</span></div>
         </div>
       </div>
 
       <div class="section-head">
         <div class="section-title-wrap">
           <span class="tier-pill tier-ops">Tier 3</span>
-          <span class="tier-desc">Departmental execution — operations, service, kitchen, sales and support</span>
+          <span class="tier-desc">Departmental Operations & Execution Units</span>
         </div>
       </div>
 
       <div class="dept-columns">
         <div class="dept-col">
-          <div class="dept-col-header" style="border-top: 3px solid var(--fin);">
-            <div class="dept-col-title">Finance & Audit</div>
-            <div class="dept-col-lead">CPA Chris Mutinda</div>
+          <div class="dept-col-header">
+            <div class="dept-col-title">Culinary & Kitchen</div>
+            <div class="dept-col-lead">Head Chef & Kitchen Team</div>
           </div>
           <div class="dept-col-body">
             <div class="dept-staff-item">
-              <span class="dst-role">Accounts Receivables</span>
-              <span class="dst-name">Mashud Abiola</span>
-              <span class="dst-kpi">Aging &lt;30 days</span>
+              <span class="dst-role">Executive Chef</span>
+              <span class="dst-name">Culinary Lead</span>
+              <span class="dst-kpi">Food Cost ≤ 28% • Quality 98%</span>
             </div>
             <div class="dept-staff-item">
-              <span class="dst-role">Cashier / POS</span>
-              <span class="dst-name">Stanley Tonui</span>
-              <span class="dst-kpi">Variance ≤2 units</span>
+              <span class="dst-role">Sous Chef / Station Cooks</span>
+              <span class="dst-name">Kitchen Brigade</span>
+              <span class="dst-kpi">Ticket Time ≤ 15 mins</span>
             </div>
             <div class="dept-staff-item">
-              <span class="dst-role">Store Keeper</span>
-              <span class="dst-name">Maclee Onkoba</span>
-              <span class="dst-kpi">Inventory integrity</span>
+              <span class="dst-role">Hygiene & Food Safety</span>
+              <span class="dst-name">QA Inspector</span>
+              <span class="dst-kpi">HACCP 100% Compliance</span>
             </div>
           </div>
         </div>
 
         <div class="dept-col">
-          <div class="dept-col-header" style="border-top: 3px solid var(--ops);">
-            <div class="dept-col-title">Front Office & Guest</div>
-            <div class="dept-col-lead">Edna Aluoch — FOM</div>
+          <div class="dept-col-header">
+            <div class="dept-col-title">Food & Beverage Service</div>
+            <div class="dept-col-lead">F&B Supervisor & Front-of-House</div>
           </div>
           <div class="dept-col-body">
             <div class="dept-staff-item">
-              <span class="dst-role">Night Manager</span>
-              <span class="dst-name">Deedan Barasa</span>
-              <span class="dst-kpi">Night audit accuracy</span>
+              <span class="dst-role">F&B Captain</span>
+              <span class="dst-name">Restaurant Manager</span>
+              <span class="dst-kpi">Guest Rating ≥ 4.8 / 5.0</span>
             </div>
             <div class="dept-staff-item">
-              <span class="dst-role">Head Receptionist</span>
-              <span class="dst-name">Lydia Olchurie</span>
-              <span class="dst-kpi">Greeting compliance</span>
+              <span class="dst-role">Waitstaff & Baristas</span>
+              <span class="dst-name">Service Team</span>
+              <span class="dst-kpi">Upsell Rate +15%</span>
             </div>
             <div class="dept-staff-item">
-              <span class="dst-role">Housekeeping</span>
-              <span class="dst-name">Room stewards</span>
-              <span class="dst-kpi">Service readiness</span>
+              <span class="dst-role">Head Bartender</span>
+              <span class="dst-name">Bar Lead</span>
+              <span class="dst-kpi">Beverage Margin ≥ 65%</span>
             </div>
           </div>
         </div>
 
         <div class="dept-col">
-          <div class="dept-col-header" style="border-top: 3px solid var(--ops);">
-            <div class="dept-col-title">F&amp;B Service</div>
-            <div class="dept-col-lead">S. Sachita — F&amp;B Mgr</div>
+          <div class="dept-col-header">
+            <div class="dept-col-title">Accommodations & Facilities</div>
+            <div class="dept-col-lead">Housekeeping & Maintenance Lead</div>
           </div>
           <div class="dept-col-body">
             <div class="dept-staff-item">
-              <span class="dst-role">Assistant F&amp;B Mgr</span>
-              <span class="dst-name">D. Mokua</span>
-              <span class="dst-kpi">Table-turn efficiency</span>
+              <span class="dst-role">Housekeeping Lead</span>
+              <span class="dst-name">Rooms Supervisor</span>
+              <span class="dst-kpi">Turnaround Time ≤ 30 mins</span>
             </div>
             <div class="dept-staff-item">
-              <span class="dst-role">Banqueting</span>
-              <span class="dst-name">David Maruti</span>
-              <span class="dst-kpi">Event timeliness</span>
+              <span class="dst-role">Maintenance Tech</span>
+              <span class="dst-name">Facility Engineer</span>
+              <span class="dst-kpi">Zero Unscheduled Downtime</span>
             </div>
             <div class="dept-staff-item">
-              <span class="dst-role">Barista Lead</span>
-              <span class="dst-name">Belinda Asembo</span>
-              <span class="dst-kpi">Drink speed & quality</span>
+              <span class="dst-role">Grounds & Security</span>
+              <span class="dst-name">Ranch Safety Unit</span>
+              <span class="dst-kpi">100% Incident-Free Days</span>
             </div>
           </div>
         </div>
 
         <div class="dept-col">
-          <div class="dept-col-header" style="border-top: 3px solid var(--ops);">
-            <div class="dept-col-title">Kitchen (BOH)</div>
-            <div class="dept-col-lead">Julius Kyalo — Exec Chef</div>
+          <div class="dept-col-header">
+            <div class="dept-col-title">Finance, Stores & Procurement</div>
+            <div class="dept-col-lead">Inventory Controller & Storekeeper</div>
           </div>
           <div class="dept-col-body">
             <div class="dept-staff-item">
-              <span class="dst-role">Head Chef</span>
-              <span class="dst-name">Kenneth Chepsoi</span>
-              <span class="dst-kpi">Wait time ≤55 min</span>
+              <span class="dst-role">Storekeeper</span>
+              <span class="dst-name">Inventory Lead</span>
+              <span class="dst-kpi">Stock Variance ≤ 0.5%</span>
             </div>
             <div class="dept-staff-item">
-              <span class="dst-role">Sous Chef</span>
-              <span class="dst-name">Brian Mwangi</span>
-              <span class="dst-kpi">Recipe protection</span>
+              <span class="dst-role">Procurement Officer</span>
+              <span class="dst-name">Supply Chain Specialist</span>
+              <span class="dst-kpi">Vendor Savings ≥ 8%</span>
             </div>
             <div class="dept-staff-item">
-              <span class="dst-role">Line cooks</span>
-              <span class="dst-name">Lion House Brigade</span>
-              <span class="dst-kpi">Prep consistency</span>
+              <span class="dst-role">Cashier & Night Auditor</span>
+              <span class="dst-name">Accounts Assistant</span>
+              <span class="dst-kpi">Daily Reconciliation 100%</span>
             </div>
           </div>
         </div>
@@ -1256,79 +1257,88 @@
 
     <section id="legal" class="tab-panel">
       <div class="card">
-        <h3><i class="fa-solid fa-file-signature" style="color:var(--board);"></i> Form LA-01: Strategic Change Directive</h3>
-        <p class="subtle">
-          Use this form when the Board or Chairman approves a new menu item, CapEx change, or operational policy change.
-          Affixing authority here creates the legal basis for execution and rollout.
-        </p>
-
-        <div class="form-group">
-          <label>Directive Reference ID</label>
-          <input type="text" class="form-control" value="LA-2026-089" readonly>
-        </div>
-
-        <div class="form-group">
-          <label>Authorized Initiator</label>
-          <input type="text" class="form-control" value="Fred Obachi Machoka (Chairman)" readonly>
-        </div>
-
-        <div class="form-group">
-          <label>Item / Change Description</label>
-          <input type="text" class="form-control" id="change-item-name" value="Italian Roast Chicken">
-        </div>
-
-        <div class="row-grid cols-2">
-          <div class="form-group">
-            <label>Gross Margin Target (%)</label>
-            <input type="text" class="form-control" value="58.86%">
+        <h3><i class="fa-solid fa-file-signature" style="color:var(--board);"></i> Board Authorization Generator</h3>
+        <p class="subtle">Generate legally binding authorization forms for operational decisions, expenditure approvals, or policy updates.</p>
+        
+        <form id="legalForm" onsubmit="generateLegalDoc(event)">
+          <div class="row-grid cols-2">
+            <div class="form-group">
+              <label for="docType">Document Type</label>
+              <select id="docType" class="form-control" required>
+                <option value="Resolution">Board Resolution for CapEx / Operational Change</option>
+                <option value="SOP Approval">Official SOP Authorization Directive</option>
+                <option value="IP Assignment">Recipe / IP Ownership Protection Notice</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="authorizer">Authorizing Board Director</label>
+              <select id="authorizer" class="form-control" required>
+                <option value="Fred Obachi Machoka (Chairman)">Fred Obachi Machoka — Chairman</option>
+                <option value="Victor Keari Machoka (Managing Director)">Victor Keari Machoka — Managing Director</option>
+                <option value="Linda Machoka (Legal & Compliance)">Linda Machoka — Legal & Compliance</option>
+              </select>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Max Food Cost (%)</label>
-            <input type="text" class="form-control" value="32.00%">
+
+          <div class="row-grid cols-2">
+            <div class="form-group">
+              <label for="assignee">Assigned Executive / Implementer</label>
+              <input type="text" id="assignee" class="form-control" value="Hiram Nyingi (General Manager)" required />
+            </div>
+            <div class="form-group">
+              <label for="effectiveDate">Effective Date</label>
+              <input type="date" id="effectiveDate" class="form-control" required />
+            </div>
           </div>
-        </div>
 
-        <button class="btn primary" onclick="generateLegalDirective()"><i class="fa-solid fa-pen-nib"></i> Affix Board Authority</button>
+          <div class="form-group">
+            <label for="subjectMatter">Subject / Purpose of Directive</label>
+            <textarea id="subjectMatter" class="form-control" rows="3" placeholder="Describe the operational mandate, menu revision, or asset deployment..." required></textarea>
+          </div>
 
-        <div id="form-output" class="form-output"></div>
+          <button type="submit" class="btn primary"><i class="fa-solid fa-gears"></i> Generate Legal Form</button>
+        </form>
+
+        <div id="formOutput" class="form-output"></div>
       </div>
     </section>
 
     <section id="ip" class="tab-panel">
       <div class="card">
-        <h3><i class="fa-solid fa-shield-halved" style="color:var(--exec);"></i> Recipe Protection & IP Governance</h3>
-        <p class="subtle">
-          Ingredient lists alone are not usually copyrightable. The strongest legal and commercial protection comes from
-          trade-secret controls, confidentiality contracts, and work-for-hire structure.
-        </p>
-
+        <h3><i class="fa-solid fa-shield-halved" style="color:var(--hr);"></i> Intellectual Property & Recipe Governance Policy</h3>
+        <p class="subtle">Protection matrix for proprietary culinary formulations, brand assets, and operating procedures.</p>
+        
         <table>
           <thead>
             <tr>
-              <th>Protection Layer</th>
-              <th>Legal Mechanism</th>
-              <th>Target Assets</th>
-              <th>Enforcement Tool</th>
+              <th>Asset Category</th>
+              <th>Protected Items</th>
+              <th>Ownership Status</th>
+              <th>Access Level</th>
+              <th>Enforcement Mechanism</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Trade secret</strong></td>
-              <td>Protection Against Unfair Competition Act</td>
-              <td>Spice ratios, marination timing, cook steps</td>
-              <td>Form LA-03 recipe NDA signed by BOH staff</td>
+              <td><strong>Culinary IP</strong></td>
+              <td>Signature BBQ Sauces, Spice Rubs, Marinades, Ranch Specialty Recipes</td>
+              <td>100% Fred's Ranch Resort Ltd</td>
+              <td>Restricted (Head Chef & GM)</td>
+              <td>NDAs, Non-Compete Clauses & Batch Production Standard Codes</td>
             </tr>
             <tr>
-              <td><strong>Literary copyright</strong></td>
-              <td>Copyright Act, 2001 (Kenya)</td>
-              <td>Manuals, videos, photos, training assets</td>
-              <td>Copyright notice on manuals & digital records</td>
+              <td><strong>Brand Identity</strong></td>
+              <td>Logo Mark, Visual Style, "Fred's Ranch" Trademarks & Slogans</td>
+              <td>100% Fred's Ranch Resort Ltd</td>
+              <td>Board Level Approval</td>
+              <td>KIPO Trademark Filings & Brand Guidelines Compliance</td>
             </tr>
             <tr>
-              <td><strong>Work-for-hire</strong></td>
-              <td>Employment contract clause</td>
-              <td>New techniques developed on company time</td>
-              <td>Automatic IP assignment to the resort</td>
+              <td><strong>Operational SOPs</strong></td>
+              <td>Guest Service Workflows, Inventory Auditing, POS Checklists</td>
+              <td>Proprietary Trade Secrets</td>
+              <td>All Management Staff</td>
+              <td>Employee Contracts & Operational Audits</td>
             </tr>
           </tbody>
         </table>
@@ -1337,56 +1347,42 @@
 
     <section id="sop" class="tab-panel">
       <div class="card">
-        <h3><i class="fa-solid fa-clock-rotate-left" style="color:var(--board);"></i> Daily Submission Timeline</h3>
-        <p class="subtle">
-          Operational integrity depends on disciplined, time-bound submission windows and digital field compliance.
-        </p>
+        <h3><i class="fa-solid fa-clock-rotate-left" style="color:var(--ops);"></i> Standard Operating Procedure (SOP) Execution Timeline</h3>
+        <p class="subtle">Fast-track workflow for policy decisions, recipe rollouts, and operational adjustments.</p>
 
         <table>
           <thead>
             <tr>
-              <th>Time Window</th>
-              <th>Phase</th>
-              <th>Action Required</th>
-              <th>Owner</th>
-              <th>BSC Signal Output</th>
+              <th>Timeframe</th>
+              <th>Action Stage</th>
+              <th>Responsible Lead</th>
+              <th>Key Deliverables</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>T-45 min</strong></td>
-              <td>Pre-shift</td>
-              <td>Fetch FO-001, verify OPM-DAILY-001, confirm Mbuzi baseline</td>
-              <td>Duty Supervisor</td>
-              <td>Pre-shift checklist</td>
+              <td><strong>T - 00:00 (Hours 0-2)</strong></td>
+              <td>Board Strategy & Approval</td>
+              <td>Chairman / Managing Director</td>
+              <td>Signed Board Resolution & Budget Clearance</td>
             </tr>
             <tr>
-              <td><strong>T-15 min</strong></td>
-              <td>Briefing</td>
-              <td>Confirm Mbuzi + platter upsell targets</td>
-              <td>Duty Supervisor</td>
-              <td>FO-001 countersigned</td>
+              <td><strong>T - 02:00 (Hours 2-6)</strong></td>
+              <td>Executive Briefing & SOP Drafting</td>
+              <td>General Manager (Hiram Nyingi)</td>
+              <td>Operational Implementation Plan & Department Directives</td>
             </tr>
             <tr>
-              <td><strong>15:00</strong></td>
-              <td>Shift 1 close</td>
-              <td>Complete OPM-DAILY-001 and POS revenue summary</td>
-              <td>Supervisor + OM</td>
-              <td>Shift 1 digital form</td>
+              <td><strong>T - 06:00 (Hours 6-12)</strong></td>
+              <td>Departmental Rollout & Training</td>
+              <td>Operations Lead / Head Chef</td>
+              <td>Staff Briefing, Inventory Procurement & Station Setup</td>
             </tr>
             <tr>
-              <td><strong>23:00</strong></td>
-              <td>Shift 2 close</td>
-              <td>Shift 2 protocol close; beer reconciliation</td>
-              <td>Supervisor + Finance</td>
-              <td>Shift 2 digital form</td>
-            </tr>
-            <tr>
-              <td><strong>07:00 next day</strong></td>
-              <td>GM morning brief</td>
-              <td>OM compiles consolidated signal brief and transmits to GM</td>
-              <td>OM → GM</td>
-              <td>Morning BSC brief</td>
+              <td><strong>T - 12:00+</strong></td>
+              <td>Full Operational Launch & Control</td>
+              <td>Shift Supervisors & Cashiers</td>
+              <td>Real-time Guest Service, POS Integration & Daily Audit</td>
             </tr>
           </tbody>
         </table>
@@ -1397,214 +1393,218 @@
   <div class="summary-strip">
     <div class="summary-inner">
       <div class="stat-box">
-        <div class="stat-label">Enterprise GP target</div>
-        <div class="stat-val" style="color:var(--fin);">≥58.86%</div>
+        <div class="stat-label">Board Oversight</div>
+        <div class="stat-val" style="color:var(--board);">6 Directors</div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">F&amp;B cost control</div>
-        <div class="stat-val" style="color:var(--ops);">≤28–32%</div>
+        <div class="stat-label">Executive Command</div>
+        <div class="stat-val" style="color:var(--exec);">4 Leaders</div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">Revenue target</div>
-        <div class="stat-val" style="color:var(--board);">KES 180M–220M</div>
+        <div class="stat-label">Operational Units</div>
+        <div class="stat-val" style="color:var(--ops);">4 Depts</div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">EBITDA</div>
-        <div class="stat-val" style="color:var(--exec);">≥22–25%</div>
+        <div class="stat-label">Governance Status</div>
+        <div class="stat-val" style="color:var(--fin);">Active v2.0</div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">Culture index</div>
-        <div class="stat-val" style="color:var(--hr);">≥90%</div>
+        <div class="stat-label">Execution Cycle</div>
+        <div class="stat-val" style="color:var(--new);">Under 12 Hrs</div>
       </div>
     </div>
   </div>
 
-  <div id="modal-overlay" onclick="closeModal()">
-    <div id="modal-box" onclick="event.stopPropagation()">
+  <!-- MODAL -->
+  <div id="modal-overlay" onclick="closeModal(event)">
+    <div id="modal-box">
       <div id="modal-header">
-        <div class="tier-pill tier-board" id="modal-tier-pill" style="display:inline-block;">Tier 1</div>
-        <div id="modal-name">Fred Obachi Machoka</div>
-        <div id="modal-role">Chairman</div>
+        <div class="tier-pill tier-board" id="modal-tier">Tier Detail</div>
+        <div id="modal-name">Name</div>
+        <div id="modal-role">Role Description</div>
       </div>
       <div id="modal-body">
         <div>
-          <div class="modal-field-label">Department / Unit</div>
-          <div class="modal-field-value" id="modal-dept">Board of Directors</div>
+          <div class="modal-field-label">Core Mandate & Directives</div>
+          <div class="modal-field-value" id="modal-mandate">-</div>
         </div>
         <div>
-          <div class="modal-field-label">Scope</div>
-          <div class="modal-field-value" id="modal-scope">Strategic governance and direct policy oversight.</div>
+          <div class="modal-field-label">Primary Performance Metrics (KPIs)</div>
+          <div class="modal-field-value" id="modal-kpis">-</div>
         </div>
         <div>
-          <div class="modal-field-label">Reports To</div>
-          <div class="modal-field-value" id="modal-reports">Board / shareholders</div>
-        </div>
-        <div>
-          <div class="modal-field-label">Key KPIs / Controls</div>
-          <div class="modal-field-value" id="modal-kpis">Governance alignment, brand integrity, growth decisions.</div>
+          <div class="modal-field-label">Reporting Line & Governance Contact</div>
+          <div class="modal-field-value" id="modal-reporting">-</div>
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn" onclick="closeModal()">Close</button>
+        <button class="btn" onclick="closeModalForce()">Close</button>
       </div>
     </div>
   </div>
 
   <script>
-    const teamData = {
-      fred_machoka: {
-        name: 'Fred Obachi Machoka',
-        role: 'Chairman',
-        tier: 'Tier 1',
-        tierClass: 'tier-board',
-        dept: 'Board of Directors',
-        scope: 'Apex governance, strategic vision, brand protection, and final policy sign-off.',
-        reports: 'Shareholders / Board',
-        kpis: 'Strategic board resolutions • Governance integrity • Brand protection'
-      },
-      sophie_namuyonga: {
-        name: 'Sophie Namuyonga',
-        role: 'Vice-Chairlady',
-        tier: 'Tier 1',
-        tierClass: 'tier-board',
-        dept: 'Board of Directors',
-        scope: 'Ethics oversight, governance review, and independent accountability.',
-        reports: 'Board of Directors',
-        kpis: 'Audit review • Governance oversight • Board assurance'
-      },
-      victor_machoka: {
-        name: 'Victor Keari Machoka',
-        role: 'Managing Director',
-        tier: 'Tier 1',
-        tierClass: 'tier-board',
-        dept: 'Board of Directors',
-        scope: 'CapEx direction, board performance oversight, and strategic growth review.',
-        reports: 'Full Board',
-        kpis: 'EBITDA targets • CapEx approvals • Growth review'
-      },
-      angel_machoka: {
-        name: 'Angel Omari Machoka',
-        role: 'Director',
-        tier: 'Tier 1',
-        tierClass: 'tier-board',
-        dept: 'Board of Directors',
-        scope: 'Governance oversight, public sentiment, and brand strategy review.',
-        reports: 'Board of Directors',
-        kpis: 'Brand strategy • PR policy • Compliance review'
-      },
-      santos_machoka: {
-        name: 'Santos Omae Machoka',
-        role: 'Sales & HR Director',
-        tier: 'Tier 1',
-        tierClass: 'tier-board',
-        dept: 'Board of Directors',
-        scope: 'Commercial strategy and people-policy oversight at board level.',
-        reports: 'Board of Directors',
-        kpis: 'Commercial growth • HR policy • Workforce direction'
-      },
-      linda_machoka: {
-        name: 'Linda Machoka',
-        role: 'Director',
-        tier: 'Tier 1',
-        tierClass: 'tier-board',
-        dept: 'Board of Directors',
-        scope: 'Legal, compliance, contract governance and stakeholder oversight.',
-        reports: 'Board of Directors',
-        kpis: 'Legal risk management • Statutory compliance • Contracting'
-      },
-      hiram_nyingi: {
-        name: 'Hiram Nyingi',
-        role: 'General Manager',
-        tier: 'Tier 2',
-        tierClass: 'tier-exec',
-        dept: 'Executive Committee',
-        scope: 'Single point of accountability between policy direction and operations execution.',
-        reports: 'Full Board',
-        kpis: 'Revenue target • EBITDA • CSAT • Daily BSC execution'
-      },
-      chris_mutinda: {
-        name: 'CPA Chris Mutinda',
-        role: 'Chief Accountant',
-        tier: 'Tier 2',
-        tierClass: 'tier-fin',
-        dept: 'Finance Department',
-        scope: 'Fiscal control, payroll, pos reconciliation, cash controls and financial reporting.',
-        reports: 'Board & GM',
-        kpis: 'GP target • Payroll accuracy • Audit log integrity'
-      },
-      reagan_ogol: {
-        name: 'Reagan Ogol',
-        role: 'Operations Manager',
-        tier: 'Tier 2',
-        tierClass: 'tier-ops',
-        dept: 'Operations Command',
-        scope: 'Shift command, SOP adherence, operational speed and delivery quality.',
-        reports: 'General Manager',
-        kpis: 'Efficiency index • Prep compliance • Shift execution'
-      },
-      albert_maroa: {
-        name: 'Albert Maroa',
-        role: 'People & Culture Manager',
-        tier: 'Tier 2',
-        tierClass: 'tier-hr',
-        dept: 'People & Culture',
-        scope: 'HR strategy, staff discipline, training, culture, and labour compliance.',
-        reports: 'Board & GM',
-        kpis: 'Turnover rate • Culture index • Staff retention'
-      }
-    };
-
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    tabButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-
-        const target = button.dataset.tab;
-        document.querySelectorAll('.tab-panel').forEach(panel => {
-          panel.classList.toggle('active', panel.id === target);
-        });
+    // Tab Switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        
+        btn.classList.add('active');
+        const tabId = btn.getAttribute('data-tab');
+        document.getElementById(tabId).classList.add('active');
       });
     });
 
-    function openModal(key) {
-      const item = teamData[key];
-      if (!item) return;
+    // Profile Data for Modal
+    const profiles = {
+      fred_machoka: {
+        name: "Fred Obachi Machoka",
+        role: "Chairman of the Board",
+        tier: "Tier 1 — Board",
+        mandate: "Overall brand leadership, strategic vision, external stakeholder relations, and high-level corporate governance.",
+        kpis: "Brand equity preservation, long-term enterprise value growth, board alignment.",
+        reporting: "Reports to Shareholders; Directs Managing Director & General Manager."
+      },
+      sophie_namuyonga: {
+        name: "Sophie Namuyonga",
+        role: "Vice-Chairlady",
+        tier: "Tier 1 — Board",
+        mandate: "Governance oversight, ethical compliance, internal audit verification, and board committee leadership.",
+        kpis: "Audit compliance rates, governance risk mitigation, board procedural integrity.",
+        reporting: "Board of Directors."
+      },
+      victor_machoka: {
+        name: "Victor Keari Machoka",
+        role: "Managing Director",
+        tier: "Tier 1 — Board",
+        mandate: "Capital expenditure strategies, asset development, expansion projects, and board directive translation.",
+        kpis: "CapEx ROI, infrastructure growth targets, enterprise profitability.",
+        reporting: "Reports to Chairman & Board; Directs Executive Management."
+      },
+      angel_machoka: {
+        name: "Angel Omari Machoka",
+        role: "Director — Brand Strategy",
+        tier: "Tier 1 — Board",
+        mandate: "Brand positioning, marketing strategies, public relations policy, and guest experience benchmarks.",
+        kpis: "Brand reach, market penetration, customer sentiment scores.",
+        reporting: "Board of Directors."
+      },
+      santos_machoka: {
+        name: "Santos Omae Machoka",
+        role: "Sales & HR Director",
+        tier: "Tier 1 — Board",
+        mandate: "Commercial growth oversight, executive talent strategy, commercial revenue streams, and high-level HR alignment.",
+        kpis: "Sales growth trajectories, executive retention rates, labor alignment.",
+        reporting: "Board of Directors."
+      },
+      linda_machoka: {
+        name: "Linda Machoka",
+        role: "Director — Legal & Compliance",
+        tier: "Tier 1 — Board",
+        mandate: "Statutory compliance, legal risk management, contract enforcement, and IP protection policy.",
+        kpis: "100% legal compliance, zero unmitigated liability exposure, IP registration integrity.",
+        reporting: "Board of Directors."
+      },
+      hiram_nyingi: {
+        name: "Hiram Nyingi",
+        role: "General Manager",
+        tier: "Tier 2 — Executive",
+        mandate: "End-to-end operational execution, revenue target delivery, cross-departmental coordination, and daily leadership.",
+        kpis: "Revenue: KES 180M–220M, EBITDA Margin: ≥22–25%, Operational Efficiency.",
+        reporting: "Reports directly to Chairman & Board; Manages Department Heads."
+      },
+      chris_mutinda: {
+        name: "CPA Chris Mutinda",
+        role: "Chief Accountant",
+        tier: "Tier 2 — Executive",
+        mandate: "Financial control, fiscal compliance, cost auditing, budget variance tracking, and cashflow management.",
+        kpis: "Budget Variance: ±2–5%, Gross Profit Target: ≥58.86%, Zero unverified leakage.",
+        reporting: "Reports to General Manager & Board Audit Committee."
+      },
+      reagan_ogol: {
+        name: "Reagan Ogol",
+        role: "Operations Manager",
+        tier: "Tier 2 — Executive",
+        mandate: "Shift operations command, guest service flow, logistics oversight, and facility upkeep coordination.",
+        kpis: "Efficiency Index: ≥90–95%, F&B Cost: ≤28.5%, Guest Satisfaction: ≥95%.",
+        reporting: "Reports to General Manager."
+      },
+      hr_head: {
+        name: "Talent & Operations Lead",
+        role: "Head of HR & Culture",
+        tier: "Tier 2 — Executive",
+        mandate: "Staff recruitment, training, performance evaluations, labor policy compliance, and cultural alignment.",
+        kpis: "Staff Retention: ≥85%, Training Compliance: 100%, HR Policy Adherence.",
+        reporting: "Reports to General Manager & Sales/HR Director."
+      }
+    };
 
-      const modal = document.getElementById('modal-overlay');
-      const tierPill = document.getElementById('modal-tier-pill');
-      tierPill.className = 'tier-pill ' + item.tierClass;
-      tierPill.textContent = item.tier;
+    function openModal(profileKey) {
+      const p = profiles[profileKey];
+      if (!p) return;
 
-      document.getElementById('modal-name').textContent = item.name;
-      document.getElementById('modal-role').textContent = item.role;
-      document.getElementById('modal-dept').textContent = item.dept;
-      document.getElementById('modal-scope').textContent = item.scope;
-      document.getElementById('modal-reports').textContent = item.reports;
-      document.getElementById('modal-kpis').textContent = item.kpis;
+      document.getElementById('modal-tier').innerText = p.tier;
+      document.getElementById('modal-name').innerText = p.name;
+      document.getElementById('modal-role').innerText = p.role;
+      document.getElementById('modal-mandate').innerText = p.mandate;
+      document.getElementById('modal-kpis').innerText = p.kpis;
+      document.getElementById('modal-reporting').innerText = p.reporting;
 
-      modal.classList.add('open');
+      document.getElementById('modal-overlay').classList.add('open');
     }
 
-    function closeModal() {
+    function closeModal(event) {
+      if (event.target.id === 'modal-overlay') {
+        document.getElementById('modal-overlay').classList.remove('open');
+      }
+    }
+
+    function closeModalForce() {
       document.getElementById('modal-overlay').classList.remove('open');
     }
 
-    function generateLegalDirective() {
-      const itemName = document.getElementById('change-item-name').value || 'Approved strategic item';
-      const output = document.getElementById('form-output');
+    // Set Default Date in Legal Form
+    document.getElementById('effectiveDate').value = new Date().toISOString().split('T')[0];
 
-      output.style.display = 'block';
-      output.innerHTML = `
-<strong>[FORM LA-01: STRATEGIC CHANGE DIRECTIVE ISSUED]</strong><br><br>
-<strong>Reference ID:</strong> LA-2026-089<br>
-<strong>Authority:</strong> Fred Obachi Machoka (Chairman)<br>
-<strong>Directive Item:</strong> ${itemName}<br>
-<strong>Preconditions:</strong><br>
-1. GP Target verified at ≥ 58.86%.<br>
-2. Trade Secret NDA (Form LA-03) dispatched to BOH kitchen staff.<br>
-3. Food safety certification verified under applicable Kenyan standards.<br><br>
-<em>Status: Affixed with executive authority and transmitted to the General Manager for operational rollout.</em>
+    function generateLegalDoc(e) {
+      e.preventDefault();
+      const docType = document.getElementById('docType').value;
+      const authorizer = document.getElementById('authorizer').value;
+      const assignee = document.getElementById('assignee').value;
+      const effectiveDate = document.getElementById('effectiveDate').value;
+      const subjectMatter = document.getElementById('subjectMatter').value;
+
+      const outputBox = document.getElementById('formOutput');
+      outputBox.style.display = 'block';
+
+      outputBox.innerHTML = `
+================================================================================
+FRED'S RANCH RESORT — OFFICIAL BOARD DIRECTIVE & INSTRUMENT
+================================================================================
+DOCUMENT TYPE: ${docType.toUpperCase()}
+DATE OF ISSUANCE: ${effectiveDate}
+AUTHORIZING BODY: ${authorizer}
+EXECUTING OFFICER: ${assignee}
+
+SUBJECT / MANDATE:
+--------------------------------------------------------------------------------
+${subjectMatter}
+
+LEGAL & OPERATIONAL PROVISIONS:
+1. AUTHORITY: This directive is issued under the corporate governance charter of
+   Fred's Ranch Resort Ltd and carries immediate operational validity.
+2. EXECUTION: The assigned executing officer is authorized and instructed to implement
+   the actions detailed above in compliance with resort SOPs and budget frameworks.
+3. COMPLIANCE: Any deviation from this directive must be reported to the Legal & 
+   Compliance Director within 24 hours of identification.
+
+CONFIRMED AND ISSUED BY:
+
+________________________________________
+${authorizer}
+Board of Directors, Fred's Ranch Resort
+================================================================================
       `;
     }
   </script>
